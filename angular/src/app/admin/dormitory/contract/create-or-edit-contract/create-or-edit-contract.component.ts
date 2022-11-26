@@ -1,0 +1,126 @@
+import { CustomColDef } from '@app/shared/common/models/base.model';
+import { CreateOrEditContractDto, ContractServiceProxy, ListRoomDto, ListStudentDto } from './../../../../../shared/service-proxies/service-proxies';
+import { AppComponentBase } from '@shared/common/app-component-base';
+import { Component, OnInit, Output, ViewChild, EventEmitter, Injector } from '@angular/core';
+import { ModalDirective } from 'ngx-bootstrap/modal';
+import { forEach } from 'lodash';
+import { finalize } from 'rxjs/operators';
+import * as moment from 'moment';
+
+@Component({
+  selector: 'app-create-or-edit-contract',
+  templateUrl: './create-or-edit-contract.component.html',
+  styleUrls: ['./create-or-edit-contract.component.less']
+})
+export class CreateOrEditContractComponent extends AppComponentBase implements OnInit {
+
+    @ViewChild("createOrEditModal", { static: true }) modal: ModalDirective;
+    @Output() modalSave: EventEmitter<any> = new EventEmitter<any>();
+
+    invoice: CreateOrEditContractDto = new CreateOrEditContractDto();
+
+    active: boolean = false;
+    contractColdef: CustomColDef[];
+    saving: boolean = false;
+    choseStudent : string = 'Chọn sinh viên';
+    defaultColDef = {
+        floatingFilter: true,
+        flex:false,
+        filter: "agTextColumnFilter",
+        resizable: false,
+        sortable: true,
+        isViewSideBar: false,
+        floatingFilterComponentParams: { suppressFilterButton: true },
+        textFormatter: function (r) {
+            if (r == null) return null;
+            return r.toLowerCase();
+        },
+    };
+    listRoom: { value: number, label: string ,price: number }[] = [];
+    listStudent:ListStudentDto[] = [];
+    listStudentEdit:{ value: number, label: string }[] = [];
+    constructor(
+        injector: Injector,
+        private _contract :ContractServiceProxy
+
+    ) {
+        super(injector);
+        this.contractColdef = [
+            {
+                headerName: 'Tên sinh viên',
+                headerTooltip: 'Tên sinh viên',
+                field: 'name',
+                cellClass: ['text-left'],
+                flex: 1
+            },
+            {
+                headerName: 'Mã sinh viên',
+                headerTooltip: 'Mã sinh viên',
+                field: 'studentNo',
+                cellClass: ['text-left'],
+                flex: 1
+            },
+        ];
+    }
+
+    ngOnInit() {
+        }
+    show(invoiceId?: number): void {
+
+        if (!invoiceId) {
+            this.invoice = new CreateOrEditContractDto();
+            this._contract.getListRoomForCreate().subscribe((result) => {
+                forEach(result, (item) => {
+                    this.listRoom.push({ value: item.id, label: item.roomNo ,price: item.unitPrice});
+                });
+            });
+            this._contract.getListStudentForCreate().subscribe((result) => {
+               this.listStudent = result;
+            });
+            this.invoice.id = invoiceId;
+            this.invoice.contractDate = moment();
+            this.active = true;
+            this.modal.show();
+        } else {
+            this._contract.getContractForEdit(invoiceId)
+                .subscribe((result) => {
+                    this._contract.getListRoom().subscribe((result) => {
+                        forEach(result, (item) => {
+                            this.listRoom.push({ value: item.id, label: item.roomNo ,price: item.unitPrice});
+                        });
+                    });
+                    this._contract.getListStudent().subscribe((result) => {
+                            forEach(result, (item) => {
+                                this.listStudentEdit.push({ value: item.id, label: item.name });
+                            });
+                    });
+                    this.invoice = result[0];
+                    this.active = true;
+                    this.modal.show();
+                });
+        }
+    }
+
+    save(): void {
+        this.saving = true;
+        this._contract
+            .createOrEdit(this.invoice)
+            .pipe(
+                finalize(() => {
+                    this.saving = false;
+                })
+            )
+            .subscribe(() => {
+                this.notify.info(this.l("SavedSuccessfully"));
+                this.close();
+                this.modalSave.emit(null);
+            });
+    }
+
+    close(): void {
+        this.active = false;
+        this.modal.hide();
+        this.listRoom = [];
+        this.listStudent = [];
+    }
+}

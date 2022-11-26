@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ActiveDebugProfile>IIS Express</ActiveDebugProfile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Update="DxServices\Reports\aatest.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\AccessoriesProposal.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\AuditLogRpt.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\BienBanThoaThuanTCTC.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\ContractAppendix.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\ContractCheckCouponFree.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\ContractCouponDiscountRequest.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\ContractDeliveryVehicleExportReport.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\ContractExportToGateWayReport.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\ContractFlowerRequest.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\ContractHandOverCarReport.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\ContractInvoiceRequest.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\ContractNewVehicleCleaningReport.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\ContractOderVehicleExportReport.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\ContractPaymentConfirmationReport.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\ContractPromotionalGiftRequestReport.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\ContractReceipt.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\ContractReport.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\ContractSummary.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\ContractTemporaryExportReport.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\ContractVehicleDeliveryProgressReport.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\ContractWarehouseExportReport.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\ContractWarrantyRequestReport.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\CostVehicleProposalReport.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\DashBoard1.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\DealerOrderColorCbuReport.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\DealerOrderReport.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\DemoAuditReport.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\DemoChartReport.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\EmployeeCertificateReport.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\EmployeeNotCertificateReport.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\EmployeeSummaryRpt.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\FSOOrderColorReport.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\GeneralContactHWCExportReport.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\MuaBanTraThangDepositeNoContractDurationTCTC.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\MuaBanTraThangDepositeTCTC.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\PaymentTimeForBankLoanReport.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\PaymentTimeForPayDirectlyReport.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\PpmPaymentReport.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\PriceReport.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\PromotionRotationHistoryRpt.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\ProposalReport.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\SalesContractDetailReport.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\SalesContractManagementExportReport.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\SalesContractProposalReport.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\SalesContractProposalReportSecondForm.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\SalesCustomerContractAdminRpt.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\SalesCustomerContractApprovalReport.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\SalesCustomerContractForTMVReport.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\SalesCustomerContractReport.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\SalesCustomerContractTmssReport.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\SalesCustomerInquiryKPIReportTest.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\SalesCustomerProposalReport.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\SalesCustomerReport.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\SalesFleetApproved.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\SalesFleetInquiries.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\SalesFleetReportExcel.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\SalesFleetSalePlan.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\SalesFleetTMVApproveReport.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\SuggestAccessories.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\SummaryByJobReport.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\TraGopTCTC.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\TraThangTCTC.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="DxServices\Reports\WarrantyConfirmReport.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>
