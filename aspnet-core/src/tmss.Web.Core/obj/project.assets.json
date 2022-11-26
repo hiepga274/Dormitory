@@ -15026,11 +15026,11 @@
   "project": {
     "version": "8.6.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Admin\\Downloads\\Learn\\CSDLNC\\tmss-sale\\aspnet-core\\src\\tmss.Web.Core\\tmss.Web.Core.csproj",
+      "projectUniqueName": "C:\\Users\\Admin\\Dormitory\\aspnet-core\\src\\tmss.Web.Core\\tmss.Web.Core.csproj",
       "projectName": "tmss.Web.Core",
-      "projectPath": "C:\\Users\\Admin\\Downloads\\Learn\\CSDLNC\\tmss-sale\\aspnet-core\\src\\tmss.Web.Core\\tmss.Web.Core.csproj",
+      "projectPath": "C:\\Users\\Admin\\Dormitory\\aspnet-core\\src\\tmss.Web.Core\\tmss.Web.Core.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Admin\\Downloads\\Learn\\CSDLNC\\tmss-sale\\aspnet-core\\src\\tmss.Web.Core\\obj\\",
+      "outputPath": "C:\\Users\\Admin\\Dormitory\\aspnet-core\\src\\tmss.Web.Core\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\DevExpress 22.1\\Components\\Offline Packages"
@@ -15052,14 +15052,14 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\Admin\\Downloads\\Learn\\CSDLNC\\tmss-sale\\aspnet-core\\src\\tmss.Application\\tmss.Application.csproj": {
-              "projectPath": "C:\\Users\\Admin\\Downloads\\Learn\\CSDLNC\\tmss-sale\\aspnet-core\\src\\tmss.Application\\tmss.Application.csproj"
+            "C:\\Users\\Admin\\Dormitory\\aspnet-core\\src\\tmss.Application\\tmss.Application.csproj": {
+              "projectPath": "C:\\Users\\Admin\\Dormitory\\aspnet-core\\src\\tmss.Application\\tmss.Application.csproj"
             },
-            "C:\\Users\\Admin\\Downloads\\Learn\\CSDLNC\\tmss-sale\\aspnet-core\\src\\tmss.EntityFrameworkCore\\tmss.EntityFrameworkCore.csproj": {
-              "projectPath": "C:\\Users\\Admin\\Downloads\\Learn\\CSDLNC\\tmss-sale\\aspnet-core\\src\\tmss.EntityFrameworkCore\\tmss.EntityFrameworkCore.csproj"
+            "C:\\Users\\Admin\\Dormitory\\aspnet-core\\src\\tmss.EntityFrameworkCore\\tmss.EntityFrameworkCore.csproj": {
+              "projectPath": "C:\\Users\\Admin\\Dormitory\\aspnet-core\\src\\tmss.EntityFrameworkCore\\tmss.EntityFrameworkCore.csproj"
             },
-            "C:\\Users\\Admin\\Downloads\\Learn\\CSDLNC\\tmss-sale\\aspnet-core\\src\\tmss.GraphQL\\tmss.GraphQL.csproj": {
-              "projectPath": "C:\\Users\\Admin\\Downloads\\Learn\\CSDLNC\\tmss-sale\\aspnet-core\\src\\tmss.GraphQL\\tmss.GraphQL.csproj"
+            "C:\\Users\\Admin\\Dormitory\\aspnet-core\\src\\tmss.GraphQL\\tmss.GraphQL.csproj": {
+              "projectPath": "C:\\Users\\Admin\\Dormitory\\aspnet-core\\src\\tmss.GraphQL\\tmss.GraphQL.csproj"
             }
           }
         }

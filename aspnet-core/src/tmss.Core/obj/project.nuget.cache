@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mJxr1OaDciqRq1bls5bjvpCAiHQdf1qMHny+kU7XTsoTApVfytdCMnbvf8T0PynnwjHqGJmPxT2eeJVsaAkB7w==",
+  "dgSpecHash": "eKXmGbe78aA5iVkj8yEBlPeFtduxAM1+kRVCLlWh1wrtHfllIMd+CJnLPXc/Xie77EvtuFvHQZ6CU0oM9MR64w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Admin\\Downloads\\Learn\\CSDLNC\\tmss-sale\\aspnet-core\\src\\tmss.Core\\tmss.Core.csproj",
+  "projectFilePath": "C:\\Users\\Admin\\Dormitory\\aspnet-core\\src\\tmss.Core\\tmss.Core.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\abp\\5.6.0\\abp.5.6.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\abp.aspnetzerocore\\2.0.0\\abp.aspnetzerocore.2.0.0.nupkg.sha512",

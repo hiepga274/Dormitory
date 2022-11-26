@@ -10750,11 +10750,11 @@
   "project": {
     "version": "8.6.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Admin\\Downloads\\Learn\\CSDLNC\\tmss-sale\\aspnet-core\\src\\tmss.EntityFrameworkCore\\tmss.EntityFrameworkCore.csproj",
+      "projectUniqueName": "C:\\Users\\Admin\\Dormitory\\aspnet-core\\src\\tmss.EntityFrameworkCore\\tmss.EntityFrameworkCore.csproj",
       "projectName": "tmss.EntityFrameworkCore",
-      "projectPath": "C:\\Users\\Admin\\Downloads\\Learn\\CSDLNC\\tmss-sale\\aspnet-core\\src\\tmss.EntityFrameworkCore\\tmss.EntityFrameworkCore.csproj",
+      "projectPath": "C:\\Users\\Admin\\Dormitory\\aspnet-core\\src\\tmss.EntityFrameworkCore\\tmss.EntityFrameworkCore.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Admin\\Downloads\\Learn\\CSDLNC\\tmss-sale\\aspnet-core\\src\\tmss.EntityFrameworkCore\\obj\\",
+      "outputPath": "C:\\Users\\Admin\\Dormitory\\aspnet-core\\src\\tmss.EntityFrameworkCore\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\DevExpress 22.1\\Components\\Offline Packages"
@@ -10776,8 +10776,8 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\Admin\\Downloads\\Learn\\CSDLNC\\tmss-sale\\aspnet-core\\src\\tmss.Core\\tmss.Core.csproj": {
-              "projectPath": "C:\\Users\\Admin\\Downloads\\Learn\\CSDLNC\\tmss-sale\\aspnet-core\\src\\tmss.Core\\tmss.Core.csproj"
+            "C:\\Users\\Admin\\Dormitory\\aspnet-core\\src\\tmss.Core\\tmss.Core.csproj": {
+              "projectPath": "C:\\Users\\Admin\\Dormitory\\aspnet-core\\src\\tmss.Core\\tmss.Core.csproj"
             }
           }
         }

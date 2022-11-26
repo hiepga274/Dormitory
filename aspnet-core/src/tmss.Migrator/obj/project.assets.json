@@ -11615,11 +11615,11 @@
   "project": {
     "version": "8.6.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Admin\\Downloads\\Learn\\CSDLNC\\tmss-sale\\aspnet-core\\src\\tmss.Migrator\\tmss.Migrator.csproj",
+      "projectUniqueName": "C:\\Users\\Admin\\Dormitory\\aspnet-core\\src\\tmss.Migrator\\tmss.Migrator.csproj",
       "projectName": "tmss.Migrator",
-      "projectPath": "C:\\Users\\Admin\\Downloads\\Learn\\CSDLNC\\tmss-sale\\aspnet-core\\src\\tmss.Migrator\\tmss.Migrator.csproj",
+      "projectPath": "C:\\Users\\Admin\\Dormitory\\aspnet-core\\src\\tmss.Migrator\\tmss.Migrator.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Admin\\Downloads\\Learn\\CSDLNC\\tmss-sale\\aspnet-core\\src\\tmss.Migrator\\obj\\",
+      "outputPath": "C:\\Users\\Admin\\Dormitory\\aspnet-core\\src\\tmss.Migrator\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\DevExpress 22.1\\Components\\Offline Packages"
@@ -11641,8 +11641,8 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\Admin\\Downloads\\Learn\\CSDLNC\\tmss-sale\\aspnet-core\\src\\tmss.EntityFrameworkCore\\tmss.EntityFrameworkCore.csproj": {
-              "projectPath": "C:\\Users\\Admin\\Downloads\\Learn\\CSDLNC\\tmss-sale\\aspnet-core\\src\\tmss.EntityFrameworkCore\\tmss.EntityFrameworkCore.csproj"
+            "C:\\Users\\Admin\\Dormitory\\aspnet-core\\src\\tmss.EntityFrameworkCore\\tmss.EntityFrameworkCore.csproj": {
+              "projectPath": "C:\\Users\\Admin\\Dormitory\\aspnet-core\\src\\tmss.EntityFrameworkCore\\tmss.EntityFrameworkCore.csproj"
             }
           }
         }
