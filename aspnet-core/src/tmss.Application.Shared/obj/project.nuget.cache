@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zS4qPDlHl+vnf6z2FZHywWntu0RQn/ef4U/yJcIdsFrcfZQI+2HV4IE2b3B3vUtZVsevHbXhuv3uOLFL7bWBdQ==",
+  "dgSpecHash": "XMAlujleJfUoib67m+ns18h5jhDPuOwWkjpzpiQqXL4tC99bUjBg7c3IC5mjEWohgJJpuetjDYA4vqVNfSkjKg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Admin\\Downloads\\Learn\\CSDLNC\\tmss-sale\\aspnet-core\\src\\tmss.Application.Shared\\tmss.Application.Shared.csproj",
+  "projectFilePath": "C:\\Users\\Admin\\Dormitory\\aspnet-core\\src\\tmss.Application.Shared\\tmss.Application.Shared.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\abp\\5.6.0\\abp.5.6.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\abp.web.common\\5.6.0\\abp.web.common.5.6.0.nupkg.sha512",
