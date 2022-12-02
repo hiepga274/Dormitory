@@ -63,17 +63,23 @@ namespace tmss.Dormitory.InBillAppService
             Select Id, RoomId,Cost,Date,Reason,IsPaid from InBill where IsDeleted = 0 and Id = '" + id + "'");
             return (List<CreateOrEditInBillDto>)query;
         }
-        //public async Task<List<InBillForViewDto>> SearchStudent()
-        //{
-        //    IEnumerable<InBillForViewDto> query = await _inBillRepo.QueryAsync<InBillForViewDto>(@"
-        //    Select Id, Name,StudentNo,Gender,Cmnd,Phone,IsRoom from Student where IsDeleted = 0 ");
-        //    return query.ToList();
-        //}
 
         public async Task<List<ListRoomDto>> GetListRoom()
         {
             IEnumerable<ListRoomDto> query = await _roomRepo.QueryAsync<ListRoomDto>(@"
                 Select Id,RoomNo from Room where IsDeleted = 0 ");
+            return query.ToList();
+        }
+        public async Task<List<InBIllForDashboardDto>> GetInBillForDashboard()
+        {
+            IEnumerable<InBIllForDashboardDto> query = await _inBillRepo.QueryAsync<InBIllForDashboardDto>(@"
+            SELECT
+            DATEPART(MONTH, Date) AS Month,
+            SUM(InBill.Cost ) AS Total
+	        FROM
+            InBill where IsDeleted =0 and YEAR(Date)=YEAR(GETDATE())
+	        GROUP BY DATEPART(MONTH, Date)
+	        ORDER BY Month;");
             return query.ToList();
         }
     }

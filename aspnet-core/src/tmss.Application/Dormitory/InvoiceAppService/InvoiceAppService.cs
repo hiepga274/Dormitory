@@ -61,16 +61,23 @@ namespace tmss.Dormitory.InvoiceAppService
             Select * from Invoice where IsDeleted = 0 and Id = '" + id + "'");
             return (List<CreateOrEditInvoiceDto>)query;
         }
-        //public async Task<List<InvoiceForViewDto>> SearchInvoice()
-        //{
-        //    IEnumerable<InvoiceForViewDto> query = await _invoiceRepo.QueryAsync<InvoiceForViewDto>(@"
-        //    Select * from Student where IsDeleted = 0 ");
-        //    return query.ToList();
-        //}
+ 
         public async Task<List<ListRoomDto>> GetListRoom()
         {
             IEnumerable<ListRoomDto> query = await _roomRepo.QueryAsync<ListRoomDto>(@"
                 Select Id,RoomNo from Room where IsDeleted = 0 ");
+            return query.ToList();
+        }
+        public async Task<List<InvoiceForDashboasdDto>> GetInvoiceForDashboard()
+        {
+            IEnumerable<InvoiceForDashboasdDto> query = await _invoiceRepo.QueryAsync<InvoiceForDashboasdDto>(@"
+            SELECT
+            DATEPART(MONTH, Month) AS Month,
+            SUM((ElecNew-ElecOld)*ElecUnit+(WarNew-WarOld)*WarUnit) AS Total
+	        FROM
+            Invoice where IsDeleted =0 and YEAR(Month)=YEAR(GETDATE())
+	        GROUP BY DATEPART(MONTH, Month)
+	        ORDER BY Month;");
             return query.ToList();
         }
     }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "lajGq1RjHreVvTFrxV/s5OLUNLLQd2qRkac16wtd9n81Aixr1f/2/qiIMKDQebsjMTTlUVgyXXvDSS6mr7LFxQ==",
+  "dgSpecHash": "jdijftKSnzr0Rfj6hUwSbm07Qn4IAPs8JNf0oEiGvPHsTS1KREN4sDlG5fcJG894mPm44BOA2yKRUEJZ7VS43A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Admin\\Dormitory\\aspnet-core\\src\\tmss.Core.Shared\\tmss.Core.Shared.csproj",
+  "projectFilePath": "C:\\Users\\Admin\\Downloads\\Learn\\CSDLNC\\Dormitory\\aspnet-core\\src\\tmss.Core.Shared\\tmss.Core.Shared.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\abp\\5.6.0\\abp.5.6.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\abp.zero.common\\5.6.0\\abp.zero.common.5.6.0.nupkg.sha512",

@@ -6733,11 +6733,11 @@
   "project": {
     "version": "8.6.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Admin\\Dormitory\\aspnet-core\\src\\tmss.Application.Shared\\tmss.Application.Shared.csproj",
+      "projectUniqueName": "C:\\Users\\Admin\\Downloads\\Learn\\CSDLNC\\Dormitory\\aspnet-core\\src\\tmss.Application.Shared\\tmss.Application.Shared.csproj",
       "projectName": "tmss.Application.Shared",
-      "projectPath": "C:\\Users\\Admin\\Dormitory\\aspnet-core\\src\\tmss.Application.Shared\\tmss.Application.Shared.csproj",
+      "projectPath": "C:\\Users\\Admin\\Downloads\\Learn\\CSDLNC\\Dormitory\\aspnet-core\\src\\tmss.Application.Shared\\tmss.Application.Shared.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Admin\\Dormitory\\aspnet-core\\src\\tmss.Application.Shared\\obj\\",
+      "outputPath": "C:\\Users\\Admin\\Downloads\\Learn\\CSDLNC\\Dormitory\\aspnet-core\\src\\tmss.Application.Shared\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\DevExpress 22.1\\Components\\Offline Packages"
@@ -6759,8 +6759,8 @@
         "netstandard2.0": {
           "targetAlias": "netstandard2.0",
           "projectReferences": {
-            "C:\\Users\\Admin\\Dormitory\\aspnet-core\\src\\tmss.Core.Shared\\tmss.Core.Shared.csproj": {
-              "projectPath": "C:\\Users\\Admin\\Dormitory\\aspnet-core\\src\\tmss.Core.Shared\\tmss.Core.Shared.csproj"
+            "C:\\Users\\Admin\\Downloads\\Learn\\CSDLNC\\Dormitory\\aspnet-core\\src\\tmss.Core.Shared\\tmss.Core.Shared.csproj": {
+              "projectPath": "C:\\Users\\Admin\\Downloads\\Learn\\CSDLNC\\Dormitory\\aspnet-core\\src\\tmss.Core.Shared\\tmss.Core.Shared.csproj"
             }
           }
         }

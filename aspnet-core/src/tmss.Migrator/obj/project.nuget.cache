@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "vIlBXcwmJ679MuEy6SWiUMFJVa083HOQ08Oct1XC34bcIuhEm/dox3/Wkxw1HP/JldDWPVkgyM5xY49wmurpCA==",
+  "dgSpecHash": "ZTMrUkOcEGtm1/fnxykhVoZjO9BLf8EZ+IXiPcz/QLgNrnfdZCt4JJg5DvVGk1PhRmTa6hhyyrMY/TjNy7rWdg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Admin\\Dormitory\\aspnet-core\\src\\tmss.Migrator\\tmss.Migrator.csproj",
+  "projectFilePath": "C:\\Users\\Admin\\Downloads\\Learn\\CSDLNC\\Dormitory\\aspnet-core\\src\\tmss.Migrator\\tmss.Migrator.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\abp\\5.6.0\\abp.5.6.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\abp.aspnetzerocore\\2.0.0\\abp.aspnetzerocore.2.0.0.nupkg.sha512",

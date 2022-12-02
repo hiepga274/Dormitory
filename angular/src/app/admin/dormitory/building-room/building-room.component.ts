@@ -221,7 +221,6 @@ export class BuildingRoomComponent extends AppComponentBase {
 
     }
     listStudent(): void {
-        console.log(this.selectedRoomId);
         this.viewListStudentModal.show(this.selectedRoomId);
     }
 

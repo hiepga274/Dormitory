@@ -59,13 +59,17 @@ namespace tmss.Dormitory.OutBillAppService
             Select Id,Cost,Date,Description from OutBill where IsDeleted = 0 and Id = '" + id + "'");
             return (List<CreateOrEditOutBillDto>)query;
         }
-        //public async Task<List<InBillForViewDto>> SearchStudent()
-        //{
-        //    IEnumerable<InBillForViewDto> query = await _inBillRepo.QueryAsync<InBillForViewDto>(@"
-        //    Select Id, Name,StudentNo,Gender,Cmnd,Phone,IsRoom from Student where IsDeleted = 0 ");
-        //    return query.ToList();
-        //}
-
-       
+        public async Task<List<OutBillForDashboardDto>> GetOutBillForDashboard()
+        {
+            IEnumerable<OutBillForDashboardDto> query = await _outBillRepo.QueryAsync<OutBillForDashboardDto>(@"
+            SELECT
+            DATEPART(MONTH, Date) AS Month,
+            SUM(OutBill.Cost ) AS Total
+	        FROM
+            OutBill where IsDeleted =0 and YEAR(Date)=YEAR(GETDATE())
+	        GROUP BY DATEPART(MONTH, Date)
+	        ORDER BY Month;");
+            return query.ToList();
+        }
     }
 }

@@ -979,6 +979,61 @@ export class ContractServiceProxy {
         }
         return _observableOf<ListStudentDto[]>(<any>null);
     }
+
+    /**
+     * @return Success
+     */
+    getTotalContractForDashboard(): Observable<ContractForDashboard[]> {
+        let url_ = this.baseUrl + "/api/services/app/Contract/GetTotalContractForDashboard";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",			
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetTotalContractForDashboard(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetTotalContractForDashboard(<any>response_);
+                } catch (e) {
+                    return <Observable<ContractForDashboard[]>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<ContractForDashboard[]>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetTotalContractForDashboard(response: HttpResponseBase): Observable<ContractForDashboard[]> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            if (Array.isArray(resultData200)) {
+                result200 = [] as any;
+                for (let item of resultData200)
+                    result200!.push(ContractForDashboard.fromJS(item));
+            }
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<ContractForDashboard[]>(<any>null);
+    }
 }
 
 @Injectable()
@@ -1274,6 +1329,61 @@ export class InBillServiceProxy {
             }));
         }
         return _observableOf<ListRoomDto[]>(<any>null);
+    }
+
+    /**
+     * @return Success
+     */
+    getInBillForDashboard(): Observable<InBIllForDashboardDto[]> {
+        let url_ = this.baseUrl + "/api/services/app/InBill/GetInBillForDashboard";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",			
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetInBillForDashboard(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetInBillForDashboard(<any>response_);
+                } catch (e) {
+                    return <Observable<InBIllForDashboardDto[]>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<InBIllForDashboardDto[]>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetInBillForDashboard(response: HttpResponseBase): Observable<InBIllForDashboardDto[]> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            if (Array.isArray(resultData200)) {
+                result200 = [] as any;
+                for (let item of resultData200)
+                    result200!.push(InBIllForDashboardDto.fromJS(item));
+            }
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<InBIllForDashboardDto[]>(<any>null);
     }
 }
 
@@ -1571,6 +1681,61 @@ export class InvoiceServiceProxy {
         }
         return _observableOf<ListRoomDto[]>(<any>null);
     }
+
+    /**
+     * @return Success
+     */
+    getInvoiceForDashboard(): Observable<InvoiceForDashboasdDto[]> {
+        let url_ = this.baseUrl + "/api/services/app/Invoice/GetInvoiceForDashboard";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",			
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetInvoiceForDashboard(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetInvoiceForDashboard(<any>response_);
+                } catch (e) {
+                    return <Observable<InvoiceForDashboasdDto[]>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<InvoiceForDashboasdDto[]>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetInvoiceForDashboard(response: HttpResponseBase): Observable<InvoiceForDashboasdDto[]> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            if (Array.isArray(resultData200)) {
+                result200 = [] as any;
+                for (let item of resultData200)
+                    result200!.push(InvoiceForDashboasdDto.fromJS(item));
+            }
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<InvoiceForDashboasdDto[]>(<any>null);
+    }
 }
 
 @Injectable()
@@ -1805,6 +1970,61 @@ export class OutBillServiceProxy {
             }));
         }
         return _observableOf<CreateOrEditOutBillDto[]>(<any>null);
+    }
+
+    /**
+     * @return Success
+     */
+    getOutBillForDashboard(): Observable<OutBillForDashboardDto[]> {
+        let url_ = this.baseUrl + "/api/services/app/OutBill/GetOutBillForDashboard";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",			
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetOutBillForDashboard(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetOutBillForDashboard(<any>response_);
+                } catch (e) {
+                    return <Observable<OutBillForDashboardDto[]>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<OutBillForDashboardDto[]>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetOutBillForDashboard(response: HttpResponseBase): Observable<OutBillForDashboardDto[]> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            if (Array.isArray(resultData200)) {
+                result200 = [] as any;
+                for (let item of resultData200)
+                    result200!.push(OutBillForDashboardDto.fromJS(item));
+            }
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<OutBillForDashboardDto[]>(<any>null);
     }
 }
 
@@ -3843,6 +4063,46 @@ export interface IListStudentDto {
     id: number | undefined;
 }
 
+export class ContractForDashboard implements IContractForDashboard {
+    month!: string | undefined;
+    total!: number;
+
+    constructor(data?: IContractForDashboard) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.month = _data["month"];
+            this.total = _data["total"];
+        }
+    }
+
+    static fromJS(data: any): ContractForDashboard {
+        data = typeof data === 'object' ? data : {};
+        let result = new ContractForDashboard();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["month"] = this.month;
+        data["total"] = this.total;
+        return data; 
+    }
+}
+
+export interface IContractForDashboard {
+    month: string | undefined;
+    total: number;
+}
+
 export class InBillForViewDto implements IInBillForViewDto {
     roomId!: number;
     roomNo!: string | undefined;
@@ -3957,6 +4217,46 @@ export interface ICreateOrEditInBillDto {
     reason: string | undefined;
     isPaid: boolean;
     id: number | undefined;
+}
+
+export class InBIllForDashboardDto implements IInBIllForDashboardDto {
+    month!: number;
+    total!: number;
+
+    constructor(data?: IInBIllForDashboardDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.month = _data["month"];
+            this.total = _data["total"];
+        }
+    }
+
+    static fromJS(data: any): InBIllForDashboardDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new InBIllForDashboardDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["month"] = this.month;
+        data["total"] = this.total;
+        return data; 
+    }
+}
+
+export interface IInBIllForDashboardDto {
+    month: number;
+    total: number;
 }
 
 export class InvoiceForViewDto implements IInvoiceForViewDto {
@@ -4107,6 +4407,46 @@ export interface ICreateOrEditInvoiceDto {
     id: number | undefined;
 }
 
+export class InvoiceForDashboasdDto implements IInvoiceForDashboasdDto {
+    month!: number;
+    total!: number;
+
+    constructor(data?: IInvoiceForDashboasdDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.month = _data["month"];
+            this.total = _data["total"];
+        }
+    }
+
+    static fromJS(data: any): InvoiceForDashboasdDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new InvoiceForDashboasdDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["month"] = this.month;
+        data["total"] = this.total;
+        return data; 
+    }
+}
+
+export interface IInvoiceForDashboasdDto {
+    month: number;
+    total: number;
+}
+
 export class OutBillForViewDto implements IOutBillForViewDto {
     cost!: number;
     date!: moment.Moment;
@@ -4201,6 +4541,46 @@ export interface ICreateOrEditOutBillDto {
     date: moment.Moment;
     description: string | undefined;
     id: number | undefined;
+}
+
+export class OutBillForDashboardDto implements IOutBillForDashboardDto {
+    month!: number;
+    total!: number;
+
+    constructor(data?: IOutBillForDashboardDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.month = _data["month"];
+            this.total = _data["total"];
+        }
+    }
+
+    static fromJS(data: any): OutBillForDashboardDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new OutBillForDashboardDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["month"] = this.month;
+        data["total"] = this.total;
+        return data; 
+    }
+}
+
+export interface IOutBillForDashboardDto {
+    month: number;
+    total: number;
 }
 
 export class UserLoginInfoDto implements IUserLoginInfoDto {

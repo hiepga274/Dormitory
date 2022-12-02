@@ -91,5 +91,19 @@ namespace tmss.Dormitory.ContractAppService
                 Select Id,Name,StudentNo from Student where IsDeleted = 0");
             return query.ToList();
         }
+        public async Task<List<ContractForDashboard>> GetTotalContractForDashboard()
+        {
+            IEnumerable<ContractForDashboard> query = await _contractRepo.QueryAsync<ContractForDashboard>(@"
+                SELECT
+                DATEPART(MONTH, ContractDate) AS Month,
+                COUNT(*) AS Total
+	            FROM Contract
+	            where YEAR(ContractDate)=YEAR(GETDATE()) and IsDeleted=0
+	            GROUP BY
+                DATEPART(MONTH, ContractDate)
+	            ORDER BY
+                DATEPART(MONTH, ContractDate)");
+            return query.ToList();
+        }
     }
 }

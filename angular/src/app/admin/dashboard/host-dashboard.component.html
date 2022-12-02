@@ -1,0 +1,92 @@
+<div class="container-fluid">
+    <div class="row pt-2">
+      <div class="col-md-12">
+        <div class="card text-left">
+          <div class="card-body">
+            <h4 class="card-title border-bottom">Thống kê số hợp đồng theo tháng</h4>
+            <ngx-charts-bar-vertical
+                [view]="[1000,400]"
+                [results]="contractData"
+                [xAxisLabel]="'Tháng'"
+                [legendTitle]="'Tháng'"
+                [yAxisLabel]="'Số hợp đồng'"
+                [legend]="true"
+                [showXAxisLabel]="true"
+                [showYAxisLabel]="true"
+                [xAxis]="true"
+                [yAxis]="true"
+                [gradient]="true">
+            </ngx-charts-bar-vertical>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="card text-left">
+          <div class="card-body">
+            <h4 class="card-title border-bottom">Báo cáo thu phí phát sinh</h4>
+                <ngx-charts-advanced-pie-chart
+                    [results]="inBill"
+                    [gradient]="true" >
+                </ngx-charts-advanced-pie-chart>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="card text-left">
+          <div class="card-body">
+            <h4 class="card-title border-bottom">Báo cáo chi tiêu</h4>
+                <ngx-charts-advanced-pie-chart
+                    [results]="outBill"
+                    [gradient]="true" >
+                </ngx-charts-advanced-pie-chart>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="card text-left">
+          <div class="card-body">
+            <h4 class="card-title border-bottom">Báo cáo thu phí diện nước</h4>
+                <ngx-charts-advanced-pie-chart
+                    [results]="invoice"
+                    [gradient]="true" >
+                </ngx-charts-advanced-pie-chart>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="card text-left">
+          <div class="card-body">
+            <h4 class="card-title border-bottom">Pie Grid Charts</h4>
+            <div id="chart">
+                <apx-chart
+                  [series]="chartOptions.series"
+                  [chart]="chartOptions.chart"
+                  [dataLabels]="chartOptions.dataLabels"
+                  [plotOptions]="chartOptions.plotOptions"
+                  [yaxis]="chartOptions.yaxis"
+                  [legend]="chartOptions.legend"
+                  [fill]="chartOptions.fill"
+                  [stroke]="chartOptions.stroke"
+                  [tooltip]="chartOptions.tooltip"
+                  [xaxis]="chartOptions.xaxis"
+                ></apx-chart>
+              </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="card text-left">
+          <div class="card-body">
+            <h4 class="card-title border-bottom">Pie Charts</h4>
+            <ngx-charts-pie-chart
+                [results]="contractData"
+                [legend]="true"
+                [legendTitle]="'Product Sale Report'"
+                [view]="[1000,300]"
+                [labels]="true" >
+            </ngx-charts-pie-chart>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

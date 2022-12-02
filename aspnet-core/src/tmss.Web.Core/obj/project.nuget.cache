@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7CwjM9ddkc3yva5TwyaHrDnlO+KC4RKYBr/7UCN9ahIMLZuRmG2DQFQDFFps/KwwIeQWssFE4Wo5C9RBaRMFsg==",
+  "dgSpecHash": "+VyH+W1wJDYkl4ycFaWcbVJyIBkqIuNRoFVRbGNrTdskMD4cRBIN7zJJvaAc/4uDBdsG8R+92bS8NmGhEfcf4Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Admin\\Dormitory\\aspnet-core\\src\\tmss.Web.Core\\tmss.Web.Core.csproj",
+  "projectFilePath": "C:\\Users\\Admin\\Downloads\\Learn\\CSDLNC\\Dormitory\\aspnet-core\\src\\tmss.Web.Core\\tmss.Web.Core.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\abp\\5.6.0\\abp.5.6.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\abp.aspnetcore\\5.6.0\\abp.aspnetcore.5.6.0.nupkg.sha512",

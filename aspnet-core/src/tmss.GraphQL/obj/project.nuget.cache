@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "R14E9ZnteHK2/loG/txghGsKMP+A8YIjSy4eVCJ0ZW48qmMFNgnDotFX6tmGGBR3r7m8TfmdWedoWQlzuvne9w==",
+  "dgSpecHash": "6PwnISo990RCBrIIHd7YHN4h2VMtRABWQt7zGGFrdBWAEyKAfJvljB4vKYGsZ+2QtpB2KQPbT3wa/NGN8dp1SQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Admin\\Dormitory\\aspnet-core\\src\\tmss.GraphQL\\tmss.GraphQL.csproj",
+  "projectFilePath": "C:\\Users\\Admin\\Downloads\\Learn\\CSDLNC\\Dormitory\\aspnet-core\\src\\tmss.GraphQL\\tmss.GraphQL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\abp\\5.6.0\\abp.5.6.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\abp.aspnetzerocore\\2.0.0\\abp.aspnetzerocore.2.0.0.nupkg.sha512",

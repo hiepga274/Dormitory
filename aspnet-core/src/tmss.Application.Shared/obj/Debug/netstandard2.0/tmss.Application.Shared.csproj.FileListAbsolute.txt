@@ -50,3 +50,16 @@ C:\Users\Admin\Downloads\Learn\CSDLNC\tmss-sale\aspnet-core\src\tmss.Application
 C:\Users\Admin\Downloads\Learn\CSDLNC\tmss-sale\aspnet-core\src\tmss.Application.Shared\obj\Debug\netstandard2.0\tmss.Application.Shared.csproj.CopyComplete
 C:\Users\Admin\Downloads\Learn\CSDLNC\tmss-sale\aspnet-core\src\tmss.Application.Shared\obj\Debug\netstandard2.0\tmss.Application.Shared.dll
 C:\Users\Admin\Downloads\Learn\CSDLNC\tmss-sale\aspnet-core\src\tmss.Application.Shared\obj\Debug\netstandard2.0\tmss.Application.Shared.pdb
+C:\Users\Admin\Downloads\Learn\CSDLNC\Dormitory\aspnet-core\src\tmss.Application.Shared\bin\Debug\netstandard2.0\tmss.Application.Shared.deps.json
+C:\Users\Admin\Downloads\Learn\CSDLNC\Dormitory\aspnet-core\src\tmss.Application.Shared\bin\Debug\netstandard2.0\tmss.Application.Shared.dll
+C:\Users\Admin\Downloads\Learn\CSDLNC\Dormitory\aspnet-core\src\tmss.Application.Shared\bin\Debug\netstandard2.0\tmss.Application.Shared.pdb
+C:\Users\Admin\Downloads\Learn\CSDLNC\Dormitory\aspnet-core\src\tmss.Application.Shared\bin\Debug\netstandard2.0\tmss.Core.Shared.dll
+C:\Users\Admin\Downloads\Learn\CSDLNC\Dormitory\aspnet-core\src\tmss.Application.Shared\bin\Debug\netstandard2.0\tmss.Core.Shared.pdb
+C:\Users\Admin\Downloads\Learn\CSDLNC\Dormitory\aspnet-core\src\tmss.Application.Shared\obj\Debug\netstandard2.0\tmss.Application.Shared.csproj.AssemblyReference.cache
+C:\Users\Admin\Downloads\Learn\CSDLNC\Dormitory\aspnet-core\src\tmss.Application.Shared\obj\Debug\netstandard2.0\tmss.Application.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\Downloads\Learn\CSDLNC\Dormitory\aspnet-core\src\tmss.Application.Shared\obj\Debug\netstandard2.0\tmss.Application.Shared.AssemblyInfoInputs.cache
+C:\Users\Admin\Downloads\Learn\CSDLNC\Dormitory\aspnet-core\src\tmss.Application.Shared\obj\Debug\netstandard2.0\tmss.Application.Shared.AssemblyInfo.cs
+C:\Users\Admin\Downloads\Learn\CSDLNC\Dormitory\aspnet-core\src\tmss.Application.Shared\obj\Debug\netstandard2.0\tmss.Application.Shared.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Downloads\Learn\CSDLNC\Dormitory\aspnet-core\src\tmss.Application.Shared\obj\Debug\netstandard2.0\tmss.Application.Shared.csproj.CopyComplete
+C:\Users\Admin\Downloads\Learn\CSDLNC\Dormitory\aspnet-core\src\tmss.Application.Shared\obj\Debug\netstandard2.0\tmss.Application.Shared.dll
+C:\Users\Admin\Downloads\Learn\CSDLNC\Dormitory\aspnet-core\src\tmss.Application.Shared\obj\Debug\netstandard2.0\tmss.Application.Shared.pdb

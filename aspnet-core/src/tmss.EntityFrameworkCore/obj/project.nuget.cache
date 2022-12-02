@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "EDrOI63EYFTUbWt+GAgUC2xS0/4pDu7oyZ62iJFO0WcBAIrtfXgUrRvMzrfXAyvcWMK3zH6SV0D2Y98jdv/d6Q==",
+  "dgSpecHash": "JBqGXnWQ6r6rzRftox6aBfaE9XfTWRmmRkOQoAzhOFfchL4+rDnTRhSBYgeot89f4P/s2RqLuZ8Fjz4BZVTsvQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Admin\\Dormitory\\aspnet-core\\src\\tmss.EntityFrameworkCore\\tmss.EntityFrameworkCore.csproj",
+  "projectFilePath": "C:\\Users\\Admin\\Downloads\\Learn\\CSDLNC\\Dormitory\\aspnet-core\\src\\tmss.EntityFrameworkCore\\tmss.EntityFrameworkCore.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\abp\\5.6.0\\abp.5.6.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\abp.aspnetzerocore\\2.0.0\\abp.aspnetzerocore.2.0.0.nupkg.sha512",
