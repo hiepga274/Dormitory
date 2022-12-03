@@ -1332,10 +1332,15 @@ export class InBillServiceProxy {
     }
 
     /**
+     * @param input (optional) 
      * @return Success
      */
-    getInBillForDashboard(): Observable<InBIllForDashboardDto[]> {
-        let url_ = this.baseUrl + "/api/services/app/InBill/GetInBillForDashboard";
+    getInBillForDashboard(input: moment.Moment | undefined): Observable<InBIllForDashboardDto[]> {
+        let url_ = this.baseUrl + "/api/services/app/InBill/GetInBillForDashboard?";
+        if (input === null)
+            throw new Error("The parameter 'input' cannot be null.");
+        else if (input !== undefined)
+            url_ += "input=" + encodeURIComponent(input ? "" + input.toJSON() : "") + "&"; 
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -1683,10 +1688,15 @@ export class InvoiceServiceProxy {
     }
 
     /**
+     * @param input (optional) 
      * @return Success
      */
-    getInvoiceForDashboard(): Observable<InvoiceForDashboasdDto[]> {
-        let url_ = this.baseUrl + "/api/services/app/Invoice/GetInvoiceForDashboard";
+    getInvoiceForDashboard(input: moment.Moment | undefined): Observable<InvoiceForDashboasdDto[]> {
+        let url_ = this.baseUrl + "/api/services/app/Invoice/GetInvoiceForDashboard?";
+        if (input === null)
+            throw new Error("The parameter 'input' cannot be null.");
+        else if (input !== undefined)
+            url_ += "input=" + encodeURIComponent(input ? "" + input.toJSON() : "") + "&"; 
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -1973,10 +1983,15 @@ export class OutBillServiceProxy {
     }
 
     /**
+     * @param input (optional) 
      * @return Success
      */
-    getOutBillForDashboard(): Observable<OutBillForDashboardDto[]> {
-        let url_ = this.baseUrl + "/api/services/app/OutBill/GetOutBillForDashboard";
+    getOutBillForDashboard(input: moment.Moment | undefined): Observable<OutBillForDashboardDto[]> {
+        let url_ = this.baseUrl + "/api/services/app/OutBill/GetOutBillForDashboard?";
+        if (input === null)
+            throw new Error("The parameter 'input' cannot be null.");
+        else if (input !== undefined)
+            url_ += "input=" + encodeURIComponent(input ? "" + input.toJSON() : "") + "&"; 
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {

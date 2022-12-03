@@ -70,16 +70,10 @@ namespace tmss.Dormitory.InBillAppService
                 Select Id,RoomNo from Room where IsDeleted = 0 ");
             return query.ToList();
         }
-        public async Task<List<InBIllForDashboardDto>> GetInBillForDashboard()
+        public async Task<List<InBIllForDashboardDto>> GetInBillForDashboard(DateTime? input)
         {
-            IEnumerable<InBIllForDashboardDto> query = await _inBillRepo.QueryAsync<InBIllForDashboardDto>(@"
-            SELECT
-            DATEPART(MONTH, Date) AS Month,
-            SUM(InBill.Cost ) AS Total
-	        FROM
-            InBill where IsDeleted =0 and YEAR(Date)=YEAR(GETDATE())
-	        GROUP BY DATEPART(MONTH, Date)
-	        ORDER BY Month;");
+            string queryString = @"exec GetInBillForDashboard @Date = '" + input.Value.ToString("yyyy/MM/dd") + "' ";
+            IEnumerable<InBIllForDashboardDto> query = await _inBillRepo.QueryAsync<InBIllForDashboardDto>(queryString);
             return query.ToList();
         }
     }

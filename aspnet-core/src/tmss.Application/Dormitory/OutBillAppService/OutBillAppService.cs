@@ -59,16 +59,10 @@ namespace tmss.Dormitory.OutBillAppService
             Select Id,Cost,Date,Description from OutBill where IsDeleted = 0 and Id = '" + id + "'");
             return (List<CreateOrEditOutBillDto>)query;
         }
-        public async Task<List<OutBillForDashboardDto>> GetOutBillForDashboard()
+        public async Task<List<OutBillForDashboardDto>> GetOutBillForDashboard(DateTime input)
         {
-            IEnumerable<OutBillForDashboardDto> query = await _outBillRepo.QueryAsync<OutBillForDashboardDto>(@"
-            SELECT
-            DATEPART(MONTH, Date) AS Month,
-            SUM(OutBill.Cost ) AS Total
-	        FROM
-            OutBill where IsDeleted =0 and YEAR(Date)=YEAR(GETDATE())
-	        GROUP BY DATEPART(MONTH, Date)
-	        ORDER BY Month;");
+            string queryString = @"exec GetOutBillForDashboard @Date = '" + input.ToString("yyyy/MM/dd") + "' ";
+            IEnumerable<OutBillForDashboardDto> query = await _outBillRepo.QueryAsync<OutBillForDashboardDto>(queryString);
             return query.ToList();
         }
     }

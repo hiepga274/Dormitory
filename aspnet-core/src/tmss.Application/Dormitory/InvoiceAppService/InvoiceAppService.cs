@@ -68,16 +68,10 @@ namespace tmss.Dormitory.InvoiceAppService
                 Select Id,RoomNo from Room where IsDeleted = 0 ");
             return query.ToList();
         }
-        public async Task<List<InvoiceForDashboasdDto>> GetInvoiceForDashboard()
+        public async Task<List<InvoiceForDashboasdDto>> GetInvoiceForDashboard(DateTime input)
         {
-            IEnumerable<InvoiceForDashboasdDto> query = await _invoiceRepo.QueryAsync<InvoiceForDashboasdDto>(@"
-            SELECT
-            DATEPART(MONTH, Month) AS Month,
-            SUM((ElecNew-ElecOld)*ElecUnit+(WarNew-WarOld)*WarUnit) AS Total
-	        FROM
-            Invoice where IsDeleted =0 and YEAR(Month)=YEAR(GETDATE())
-	        GROUP BY DATEPART(MONTH, Month)
-	        ORDER BY Month;");
+            string queryString = @"exec GetInvoiceForDashboard @Date = '" + input.ToString("yyyy/MM/dd") + "' ";
+            IEnumerable<InvoiceForDashboasdDto> query = await _invoiceRepo.QueryAsync<InvoiceForDashboasdDto>(queryString);
             return query.ToList();
         }
     }
