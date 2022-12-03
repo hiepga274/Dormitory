@@ -20,6 +20,7 @@ export class CreateOrEditInvoiceComponent extends AppComponentBase implements On
     active: boolean = false;
     saving: boolean = false;
     listRoom: { value: number, label: string }[] = [];
+    invId;
     constructor(
         injector: Injector,
         private _invoice :InvoiceServiceProxy
@@ -31,7 +32,7 @@ export class CreateOrEditInvoiceComponent extends AppComponentBase implements On
     ngOnInit() {
         }
     show(invoiceId?: number): void {
-
+        this.invId = invoiceId;
         if (!invoiceId) {
             this._invoice.getListRoom().subscribe((result) => {
                 forEach(result, (item) => {
@@ -58,6 +59,11 @@ export class CreateOrEditInvoiceComponent extends AppComponentBase implements On
     }
 
     save(): void {
+        if(this.invoice.elecNew < this.invoice.elecOld||this.invoice.warNew < this.invoice.warOld){
+            this.notify.error("Số điện hoặc nước mới không được nhỏ hơn số cũ");
+        }
+        else
+        {
         this.saving = true;
         this._invoice
             .createOrEdit(this.invoice)
@@ -71,6 +77,7 @@ export class CreateOrEditInvoiceComponent extends AppComponentBase implements On
                 this.close();
                 this.modalSave.emit(null);
             });
+        }
     }
 
     close(): void {
@@ -78,5 +85,13 @@ export class CreateOrEditInvoiceComponent extends AppComponentBase implements On
         this.modal.hide();
         this.listRoom = [];
 
+    }
+    onChooseRoom(roomId) {
+        this.invoice.elecOld = 0;
+        this.invoice.warOld = 0;
+        this._invoice.getLastMonthInvoice(roomId).subscribe((result) => {
+            this.invoice.elecOld = result[0].elecNew;
+            this.invoice.warOld = result[0].warNew;
+        });
     }
 }

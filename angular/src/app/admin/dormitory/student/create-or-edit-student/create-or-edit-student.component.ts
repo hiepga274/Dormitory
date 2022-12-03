@@ -1,3 +1,4 @@
+import { forEach } from 'lodash';
 import { finalize } from 'rxjs/operators';
 import { StudentServiceProxy, CreateOrEditStudentDto } from './../../../../../shared/service-proxies/service-proxies';
 import { AppComponentBase } from '@shared/common/app-component-base';
@@ -15,17 +16,16 @@ export class CreateOrEditStudentComponent extends AppComponentBase {
     @Output() modalSave: EventEmitter<any> = new EventEmitter<any>();
 
     student: CreateOrEditStudentDto = new CreateOrEditStudentDto();
-
     active: boolean = false;
     saving: boolean = false;
-
 
     listGender: { value: number, label: string }[] = [
         { value: 1, label: "Nam" },
         { value: 2, label: "Nữ" },
         { value: 3, label: "Khác"}
     ];
-
+    listStudentNo: any[] = [];
+    StdId;
     constructor(
         injector: Injector,
         private _student :StudentServiceProxy
@@ -38,7 +38,11 @@ export class CreateOrEditStudentComponent extends AppComponentBase {
     }
 
     show(studentId?: number): void {
+        this.StdId = studentId;
         if (!studentId) {
+            this._student.getListStudentNo().subscribe(res => {
+                this.listStudentNo = res;
+            });
             this.student = new CreateOrEditStudentDto();
             this.student.id = studentId;
 
@@ -55,6 +59,22 @@ export class CreateOrEditStudentComponent extends AppComponentBase {
     }
 
     save(): void {
+        if (this.StdId==null) {
+            //check trùng mã sinh viên
+            this._student.getListStudentNo().subscribe(res => {
+                forEach (res, (item) => {
+                    if (item.studentNo === this.student.studentNo) {
+                        this.notify.error("Mã sinh viên đã tồn tại");
+                        return;
+                    }
+                    else if(item.cmnd === this.student.cmnd){
+                        this.notify.error("CMND đã tồn tại");
+                        return;
+                    }
+                })
+            });
+        }
+        else {
         this.saving = true;
         this._student
             .createOrEdit(this.student)
@@ -68,6 +88,7 @@ export class CreateOrEditStudentComponent extends AppComponentBase {
                 this.close();
                 this.modalSave.emit(null);
             });
+        }
     }
 
     close(): void {

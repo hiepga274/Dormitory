@@ -3,6 +3,7 @@ import { CreateOrEditRoomDto, BuildingRoomServiceProxy } from './../../../../../
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { Component, OnInit, Output, ViewChild, EventEmitter, Injector } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal';
+import { forEach } from 'lodash';
 
 @Component({
   selector: 'app-create-or-edit-room',
@@ -19,6 +20,8 @@ export class CreateOrEditRoomComponent extends AppComponentBase  {
     buildingId;
     active: boolean = false;
     saving: boolean = false;
+    rmId;
+    listRoomNo = [];
     constructor(
         injector: Injector,
         private _buildingRoom :BuildingRoomServiceProxy
@@ -32,6 +35,7 @@ export class CreateOrEditRoomComponent extends AppComponentBase  {
     }
 
     show(buildingId: number,roomId?: number,): void {
+        this.rmId = roomId;
         if (!roomId) {
             this.room = new CreateOrEditRoomDto();
             this.room.id = roomId;
@@ -49,6 +53,16 @@ export class CreateOrEditRoomComponent extends AppComponentBase  {
     }
 
     save(): void {
+        if(this.rmId==null){
+            this._buildingRoom.getRoomNo().subscribe(res => {
+                forEach(res, (item) => {
+                    if(item.roomNo === this.room.roomNo){
+                        this.notify.error("Tên phòng đã tồn tại");
+                        return;
+                    }
+                });
+            });
+        }else{
         this.saving = true;
         this._buildingRoom
             .createOrEditRoom(this.room)
@@ -62,6 +76,7 @@ export class CreateOrEditRoomComponent extends AppComponentBase  {
                 this.close();
                 this.modalSave.emit(null);
             });
+        }
     }
 
     close(): void {

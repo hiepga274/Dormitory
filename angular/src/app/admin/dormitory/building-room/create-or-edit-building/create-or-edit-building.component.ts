@@ -1,3 +1,4 @@
+import { forEach } from 'lodash';
 import { finalize } from 'rxjs/operators';
 import { BuildingRoomServiceProxy } from './../../../../../shared/service-proxies/service-proxies';
 import { Component, OnInit, Output, ViewChild, EventEmitter, Injector } from '@angular/core';
@@ -16,6 +17,8 @@ export class CreateOrEditBuildingComponent extends AppComponentBase {
     @Output() modalSave: EventEmitter<any> = new EventEmitter<any>();
 
     building: CreateOrEditBuildingDto = new CreateOrEditBuildingDto();
+    listBuidlingName = [];
+    bldId;
 
     active: boolean = false;
     saving: boolean = false;
@@ -31,10 +34,10 @@ export class CreateOrEditBuildingComponent extends AppComponentBase {
     }
 
     show(buildingId?: number): void {
+        this.bldId = buildingId;
         if (!buildingId) {
             this.building = new CreateOrEditBuildingDto();
             this.building.id = buildingId;
-
             this.active = true;
             this.modal.show();
         } else {
@@ -48,6 +51,16 @@ export class CreateOrEditBuildingComponent extends AppComponentBase {
     }
 
     save(): void {
+        if(this.bldId==null){
+            this._buildingRoom.getBuildingName().subscribe(res => {
+                forEach(res, (item) => {
+                    if(item.name === this.building.name){
+                        this.notify.error("Tên tòa nhà đã tồn tại");
+                        return;
+                    }
+                });
+            });
+        }else{
         this.saving = true;
         this._buildingRoom
             .createOrEditBuilding(this.building)
@@ -61,6 +74,7 @@ export class CreateOrEditBuildingComponent extends AppComponentBase {
                 this.close();
                 this.modalSave.emit(null);
             });
+        }
     }
 
     close(): void {

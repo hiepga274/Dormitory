@@ -19,20 +19,20 @@
                                 <div class="row">
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <tmss-combobox [className]="'ipStRequire'"  [isRequired]="true" [disabled]="invoice.id"
+                                            <tmss-combobox [className]="'ipStRequire'"  [isRequired]="true" [disabled]="invoice.id" (onChangeValue)="onChooseRoom(invoice.roomId)"
                                             [items]="listRoom" [(ngModel)]="invoice.roomId" [text]="l('Tên phòng')" name="RoomId" required></tmss-combobox>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <tmss-text-input [className]="'ipStRequire'" type="number" [isRequired]="true" [(ngModel)]="invoice.elecOld"
-                                            [text]="l('Số điện cũ')" name="ElecOld" [maxlength]="50" required></tmss-text-input>
+                                            [text]="l('Số điện cũ')" name="ElecOld" [maxlength]="50" [disabled]="true" required></tmss-text-input>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <tmss-text-input [className]="'ipStRequire'" type="number" [isRequired]="true" [(ngModel)]="invoice.elecNew"
-                                            [text]="l('Số điện mới')" name="ElecNew" [maxlength]="50" required></tmss-text-input>
+                                            [text]="l('Số điện mới')" name="ElecNew" [maxlength]="50"  ></tmss-text-input>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
@@ -47,7 +47,7 @@
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <tmss-text-input [className]="'ipStRequire'" type="number" [isRequired]="true" [(ngModel)]="invoice.warOld"
-                                            [text]="l('Số nước cũ')" name="WarOld" [maxlength]="50" required></tmss-text-input>
+                                            [text]="l('Số nước cũ')" name="WarOld" [maxlength]="50" [disabled]="true" required></tmss-text-input>
                                         </div>
                                     </div>
                                     <div class="col-md-3">

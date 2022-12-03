@@ -5,8 +5,8 @@
             <form *ngIf="active" #mstGenProvincesForm="ngForm" novalidate (ngSubmit)="save()" autocomplete="off">
                 <div class="modal-header">
                     <h4 class="modal-title">
-                        <span *ngIf="invoice.id">{{ l("Sửa thông tin hợp đồng") }}</span>
-                        <span *ngIf="!invoice.id">{{ l("Thêm mới hợp đồng") }}</span>
+                        <span *ngIf="contract.id">{{ l("Sửa thông tin hợp đồng") }}</span>
+                        <span *ngIf="!contract.id">{{ l("Thêm mới hợp đồng") }}</span>
                     </h4>
                     <button type="button" class="close" (click)="close()" aria-label="Close" [disabled]="saving">
                         <span aria-hidden="true">&times;</span>
@@ -19,11 +19,11 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <tmss-text-input [className]="'ipStRequire'"  [isRequired]="true" *ngIf="invoice.id" [isDisabled]="invoice.id"
-                                            [text]="l('Số hợp đồng')" name="ContractNo" [(ngModel)]="invoice.contractNo" [maxlength]="50" ></tmss-text-input>
+                                            <tmss-text-input [className]="'ipStRequire'"  [isRequired]="true" *ngIf="contract.id" [isDisabled]="contract.id"
+                                            [text]="l('Số hợp đồng')" name="ContractNo" [(ngModel)]="contract.contractNo" [maxlength]="50" ></tmss-text-input>
                                         </div>
                                     </div>
-                                    <div class="col-md-4" *ngIf="!invoice.id">
+                                    <div class="col-md-4" *ngIf="!contract.id">
                                         <tmss-multi-column-dropdown
                                         [placeholder]="choseStudent"
                                         [height]="'250px'"
@@ -32,37 +32,37 @@
                                         [columnDefs]="contractColdef"
                                         [defaultColDef]="defaultColDef"
                                         dataField="id"
-                                        [(ngModel)]="invoice.studentId"
+                                        [(ngModel)]="contract.studentId"
                                         displayField="name"
                                     ></tmss-multi-column-dropdown>
                                     </div>
-                                    <div class="col-md-4" *ngIf="invoice.id">
+                                    <div class="col-md-4" *ngIf="contract.id">
                                         <div class="form-group">
-                                            <tmss-combobox [className]="'ipStRequire'"  [isRequired]="true" [isDisabled]="invoice.id"
-                                            [items]="listStudentEdit" [(ngModel)]="invoice.studentId" [text]="l('Tên sinh viên')" name="Student" required></tmss-combobox>
+                                            <tmss-combobox [className]="'ipStRequire'"  [isRequired]="true" [isDisabled]="contract.id"
+                                            [items]="listStudentEdit" [(ngModel)]="contract.studentId" [text]="l('Tên sinh viên')" name="Student" required></tmss-combobox>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <tmss-combobox [className]="'ipStRequire'"  [isRequired]="true" [isDisabled]="invoice.id"
-                                            [items]="listRoom" [(ngModel)]="invoice.roomId" [text]="l('Tên phòng')" name="RoomId" required></tmss-combobox>
+                                            <tmss-combobox [className]="'ipStRequire'"  [isRequired]="true" [isDisabled]="contract.id"
+                                            [items]="listRoom" [(ngModel)]="contract.roomId" [text]="l('Tên phòng')" name="RoomId" required></tmss-combobox>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <tmss-datepicker [isDisabled]="true"  [isRequired]="true" [showIcon]="true" [(ngModel)]="invoice.contractDate" [text]="l('Ngày lập hđ:')" name="ContractDate"></tmss-datepicker>
+                                            <tmss-datepicker [isDisabled]="true"  [isRequired]="true" [showIcon]="true" [(ngModel)]="contract.contractDate" [text]="l('Ngày lập hđ:')" name="ContractDate"></tmss-datepicker>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <tmss-datepicker  [isRequired]="true" [showIcon]="true" [(ngModel)]="invoice.startDate" [text]="l('Ngày bắt đầu:')" name="StartDate"></tmss-datepicker>
+                                            <tmss-datepicker  [isRequired]="true" [showIcon]="true" [(ngModel)]="contract.startDate" [text]="l('Ngày bắt đầu:')" name="StartDate"></tmss-datepicker>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <tmss-datepicker  [isRequired]="true" [showIcon]="true" [(ngModel)]="invoice.endDate" [text]="l('Ngày kết thúc:')" name="EndDate"></tmss-datepicker>
+                                            <tmss-datepicker  [isRequired]="true" [showIcon]="true" [(ngModel)]="contract.endDate" [text]="l('Ngày kết thúc:')" name="EndDate"></tmss-datepicker>
                                         </div>
                                     </div>
 

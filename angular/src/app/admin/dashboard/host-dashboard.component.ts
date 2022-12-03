@@ -30,7 +30,7 @@ export class HostDashboardComponent extends AppComponentBase implements OnInit {
     name:any[]=["Tổng thu phí phát sinh", "Tổng chi", "Tổng thu phí điện nước"];
     multi: any[];
     colorScheme = {
-      domain: ['#5AA454', '#C7B42C', '#AAAAAA']
+      domain: ['#a7e082', '#be3030', '#1aa4f3']
     };
 
     view: any[] = [900, 600];
@@ -62,7 +62,7 @@ export class HostDashboardComponent extends AppComponentBase implements OnInit {
     };
     getContract(year)
     {
-        this._contract.getTotalContractForDashboard().subscribe(res=>{
+        this._contract.getTotalContractForDashboard(year).subscribe(res=>{
             this.contractData = [];
                 forEach(res, (item) => {
                     switch (item.month) {

@@ -109,6 +109,18 @@ namespace tmss.Dormitory.BuildingRoomAppService
             where RoomId = '" + id + "' and Student.IsDeleted=0 and Contract.IsDeleted=0");
             return (List<StudentForViewDto>)query;
         }
+        public async Task<List<BuildingForViewDto>> GetBuildingName()
+        {
+            IEnumerable<BuildingForViewDto> query = await _buildingRepo.QueryAsync<BuildingForViewDto>(@"
+                Select Name From Building where IsDeleted = 0");
+            return query.ToList();
+        }
+        public async Task<List<RoomForViewDto>> GetRoomNo()
+        {
+            IEnumerable<RoomForViewDto> query = await _buildingRepo.QueryAsync<RoomForViewDto>(@"
+                Select RoomNo From Room where IsDeleted = 0");
+            return query.ToList();
+        }
 
     }
 }

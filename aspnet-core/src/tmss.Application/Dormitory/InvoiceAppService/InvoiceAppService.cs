@@ -74,6 +74,12 @@ namespace tmss.Dormitory.InvoiceAppService
             IEnumerable<InvoiceForDashboasdDto> query = await _invoiceRepo.QueryAsync<InvoiceForDashboasdDto>(queryString);
             return query.ToList();
         }
+        public async Task<List<InvoiceForViewDto>> GetLastMonthInvoice(long input)
+        {
+            string queryString = @"select * from Invoice where RoomId='"+input+"' and MONTH(Month) = MONTH(GetDate())-1 and IsDeleted =0";
+            IEnumerable<InvoiceForViewDto> query = await _invoiceRepo.QueryAsync<InvoiceForViewDto>(queryString);
+            return query.ToList();
+        }
     }
 }
 

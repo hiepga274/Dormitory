@@ -68,5 +68,11 @@ namespace tmss.Dormitory.StudentAppService
             Select Id, Name,StudentNo,Gender,Cmnd,Phone,IsRoom from Student where IsDeleted = 0 ");
             return query.ToList();
         }
+        public async Task<List<StudentForViewDto>> GetListStudentNo()
+        {
+            IEnumerable<StudentForViewDto> query = await _studentRepo.QueryAsync<StudentForViewDto>(@"
+            Select StudentNo,Cmnd from Student where IsDeleted = 0 ");
+            return query.ToList();
+        }
     }
 }

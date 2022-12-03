@@ -17,7 +17,7 @@ export class CreateOrEditContractComponent extends AppComponentBase implements O
     @ViewChild("createOrEditModal", { static: true }) modal: ModalDirective;
     @Output() modalSave: EventEmitter<any> = new EventEmitter<any>();
 
-    invoice: CreateOrEditContractDto = new CreateOrEditContractDto();
+    contract: CreateOrEditContractDto = new CreateOrEditContractDto();
 
     active: boolean = false;
     contractColdef: CustomColDef[];
@@ -68,7 +68,7 @@ export class CreateOrEditContractComponent extends AppComponentBase implements O
     show(invoiceId?: number): void {
 
         if (!invoiceId) {
-            this.invoice = new CreateOrEditContractDto();
+            this.contract = new CreateOrEditContractDto();
             this._contract.getListRoomForCreate().subscribe((result) => {
                 forEach(result, (item) => {
                     this.listRoom.push({ value: item.id, label: item.roomNo ,price: item.unitPrice});
@@ -77,8 +77,8 @@ export class CreateOrEditContractComponent extends AppComponentBase implements O
             this._contract.getListStudentForCreate().subscribe((result) => {
                this.listStudent = result;
             });
-            this.invoice.id = invoiceId;
-            this.invoice.contractDate = moment();
+            this.contract.id = invoiceId;
+            this.contract.contractDate = moment();
             this.active = true;
             this.modal.show();
         } else {
@@ -94,7 +94,7 @@ export class CreateOrEditContractComponent extends AppComponentBase implements O
                                 this.listStudentEdit.push({ value: item.id, label: item.name });
                             });
                     });
-                    this.invoice = result[0];
+                    this.contract = result[0];
                     this.active = true;
                     this.modal.show();
                 });
@@ -102,9 +102,16 @@ export class CreateOrEditContractComponent extends AppComponentBase implements O
     }
 
     save(): void {
+        // check start date < end date
+        if (this.contract.startDate.valueOf() > this.contract.endDate.valueOf()) {
+            //open infomation modal
+            this.notify.error(this.l('Ngày bắt đầu phải nhỏ hơn ngày kết thúc'));
+            return;
+        }
+        else{
         this.saving = true;
         this._contract
-            .createOrEdit(this.invoice)
+            .createOrEdit(this.contract)
             .pipe(
                 finalize(() => {
                     this.saving = false;
@@ -115,6 +122,8 @@ export class CreateOrEditContractComponent extends AppComponentBase implements O
                 this.close();
                 this.modalSave.emit(null);
             });
+        }
+
     }
 
     close(): void {

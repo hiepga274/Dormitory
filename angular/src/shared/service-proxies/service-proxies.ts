@@ -521,6 +521,116 @@ export class BuildingRoomServiceProxy {
         }
         return _observableOf<StudentForViewDto[]>(<any>null);
     }
+
+    /**
+     * @return Success
+     */
+    getBuildingName(): Observable<BuildingForViewDto[]> {
+        let url_ = this.baseUrl + "/api/services/app/BuildingRoom/GetBuildingName";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",			
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetBuildingName(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetBuildingName(<any>response_);
+                } catch (e) {
+                    return <Observable<BuildingForViewDto[]>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<BuildingForViewDto[]>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetBuildingName(response: HttpResponseBase): Observable<BuildingForViewDto[]> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            if (Array.isArray(resultData200)) {
+                result200 = [] as any;
+                for (let item of resultData200)
+                    result200!.push(BuildingForViewDto.fromJS(item));
+            }
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<BuildingForViewDto[]>(<any>null);
+    }
+
+    /**
+     * @return Success
+     */
+    getRoomNo(): Observable<RoomForViewDto[]> {
+        let url_ = this.baseUrl + "/api/services/app/BuildingRoom/GetRoomNo";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",			
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetRoomNo(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetRoomNo(<any>response_);
+                } catch (e) {
+                    return <Observable<RoomForViewDto[]>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<RoomForViewDto[]>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetRoomNo(response: HttpResponseBase): Observable<RoomForViewDto[]> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            if (Array.isArray(resultData200)) {
+                result200 = [] as any;
+                for (let item of resultData200)
+                    result200!.push(RoomForViewDto.fromJS(item));
+            }
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<RoomForViewDto[]>(<any>null);
+    }
 }
 
 @Injectable()
@@ -981,10 +1091,13 @@ export class ContractServiceProxy {
     }
 
     /**
+     * @param input (optional) 
      * @return Success
      */
-    getTotalContractForDashboard(): Observable<ContractForDashboard[]> {
-        let url_ = this.baseUrl + "/api/services/app/Contract/GetTotalContractForDashboard";
+    getTotalContractForDashboard(input: moment.Moment | null | undefined): Observable<ContractForDashboard[]> {
+        let url_ = this.baseUrl + "/api/services/app/Contract/GetTotalContractForDashboard?";
+        if (input !== undefined)
+            url_ += "input=" + encodeURIComponent(input ? "" + input.toJSON() : "") + "&"; 
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -1335,11 +1448,9 @@ export class InBillServiceProxy {
      * @param input (optional) 
      * @return Success
      */
-    getInBillForDashboard(input: moment.Moment | undefined): Observable<InBIllForDashboardDto[]> {
+    getInBillForDashboard(input: moment.Moment | null | undefined): Observable<InBIllForDashboardDto[]> {
         let url_ = this.baseUrl + "/api/services/app/InBill/GetInBillForDashboard?";
-        if (input === null)
-            throw new Error("The parameter 'input' cannot be null.");
-        else if (input !== undefined)
+        if (input !== undefined)
             url_ += "input=" + encodeURIComponent(input ? "" + input.toJSON() : "") + "&"; 
         url_ = url_.replace(/[?&]$/, "");
 
@@ -1745,6 +1856,66 @@ export class InvoiceServiceProxy {
             }));
         }
         return _observableOf<InvoiceForDashboasdDto[]>(<any>null);
+    }
+
+    /**
+     * @param input (optional) 
+     * @return Success
+     */
+    getLastMonthInvoice(input: number | undefined): Observable<InvoiceForViewDto[]> {
+        let url_ = this.baseUrl + "/api/services/app/Invoice/GetLastMonthInvoice?";
+        if (input === null)
+            throw new Error("The parameter 'input' cannot be null.");
+        else if (input !== undefined)
+            url_ += "input=" + encodeURIComponent("" + input) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",			
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetLastMonthInvoice(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetLastMonthInvoice(<any>response_);
+                } catch (e) {
+                    return <Observable<InvoiceForViewDto[]>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<InvoiceForViewDto[]>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetLastMonthInvoice(response: HttpResponseBase): Observable<InvoiceForViewDto[]> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            if (Array.isArray(resultData200)) {
+                result200 = [] as any;
+                for (let item of resultData200)
+                    result200!.push(InvoiceForViewDto.fromJS(item));
+            }
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<InvoiceForViewDto[]>(<any>null);
     }
 }
 
@@ -2433,6 +2604,61 @@ export class StudentServiceProxy {
     }
 
     protected processSearchStudent(response: HttpResponseBase): Observable<StudentForViewDto[]> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            if (Array.isArray(resultData200)) {
+                result200 = [] as any;
+                for (let item of resultData200)
+                    result200!.push(StudentForViewDto.fromJS(item));
+            }
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<StudentForViewDto[]>(<any>null);
+    }
+
+    /**
+     * @return Success
+     */
+    getListStudentNo(): Observable<StudentForViewDto[]> {
+        let url_ = this.baseUrl + "/api/services/app/Student/GetListStudentNo";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",			
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetListStudentNo(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetListStudentNo(<any>response_);
+                } catch (e) {
+                    return <Observable<StudentForViewDto[]>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<StudentForViewDto[]>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetListStudentNo(response: HttpResponseBase): Observable<StudentForViewDto[]> {
         const status = response.status;
         const responseBlob = 
             response instanceof HttpResponse ? response.body : 
