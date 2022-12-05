@@ -18,6 +18,7 @@ export class CreateOrEditStudentComponent extends AppComponentBase {
     student: CreateOrEditStudentDto = new CreateOrEditStudentDto();
     active: boolean = false;
     saving: boolean = false;
+    check=false;
 
     listGender: { value: number, label: string }[] = [
         { value: 1, label: "Nam" },
@@ -60,18 +61,31 @@ export class CreateOrEditStudentComponent extends AppComponentBase {
 
     save(): void {
         if (this.StdId==null) {
-            //check trùng mã sinh viên
             this._student.getListStudentNo().subscribe(res => {
                 forEach (res, (item) => {
                     if (item.studentNo === this.student.studentNo) {
                         this.notify.error("Mã sinh viên đã tồn tại");
+                        this.check = true;
+                        this.close();
                         return;
                     }
                     else if(item.cmnd === this.student.cmnd){
                         this.notify.error("CMND đã tồn tại");
+                        this.check = true;
+                        this.close();
                         return;
                     }
                 })
+                if (!this.check) {
+                    this.saving = true;
+                    this._student.createOrEdit(this.student)
+                        .pipe(finalize(() => { this.saving = false; }))
+                        .subscribe(() => {
+                            this.notify.info(this.l('SavedSuccessfully'));
+                            this.close();
+                            this.modalSave.emit(null);
+                });
+                }
             });
         }
         else {
@@ -94,5 +108,6 @@ export class CreateOrEditStudentComponent extends AppComponentBase {
     close(): void {
         this.active = false;
         this.modal.hide();
+        this.check = false;
     }
 }
