@@ -69,11 +69,7 @@ export class CreateOrEditContractComponent extends AppComponentBase implements O
 
         if (!invoiceId) {
             this.contract = new CreateOrEditContractDto();
-            this._contract.getListRoomForCreate().subscribe((result) => {
-                forEach(result, (item) => {
-                    this.listRoom.push({ value: item.id, label: item.roomNo ,price: item.unitPrice});
-                });
-            });
+
             this._contract.getListStudentForCreate().subscribe((result) => {
                this.listStudent = result;
             });
@@ -131,5 +127,13 @@ export class CreateOrEditContractComponent extends AppComponentBase implements O
         this.modal.hide();
         this.listRoom = [];
         this.listStudent = [];
+    }
+    onChangeSelection(event){
+        this.listRoom = [];
+        this._contract.getListRoomForCreate(event).subscribe((result) => {
+            forEach(result, (item) => {
+                this.listRoom.push({ value: item.id, label: item.roomNo ,price: item.unitPrice});
+            });
+        });
     }
 }

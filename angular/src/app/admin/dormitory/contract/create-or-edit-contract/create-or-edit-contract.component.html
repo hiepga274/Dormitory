@@ -26,6 +26,7 @@
                                     <div class="col-md-4" *ngIf="!contract.id">
                                         <tmss-multi-column-dropdown
                                         [placeholder]="choseStudent"
+                                        (ngModelChange)="onChangeSelection($event)"
                                         [height]="'250px'"
                                         [list]="listStudent"
                                         name="student"
