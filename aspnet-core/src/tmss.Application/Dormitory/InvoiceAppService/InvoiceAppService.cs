@@ -68,6 +68,12 @@ namespace tmss.Dormitory.InvoiceAppService
                 Select Id,RoomNo from Room where IsDeleted = 0 ");
             return query.ToList();
         }
+        public async Task<List<ListRoomDto>> GetListRoomForCreate()
+        {
+            IEnumerable<ListRoomDto> query = await _roomRepo.QueryAsync<ListRoomDto>(@"
+                exec GetListRoomForCreateInvoice ");
+            return query.ToList();
+        }
         public async Task<List<InvoiceForDashboasdDto>> GetInvoiceForDashboard(DateTime input)
         {
             string queryString = @"exec GetInvoiceForDashboard @Date = '" + input.ToString("yyyy/MM/dd") + "' ";

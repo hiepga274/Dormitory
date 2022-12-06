@@ -34,7 +34,7 @@ export class CreateOrEditInvoiceComponent extends AppComponentBase implements On
     show(invoiceId?: number): void {
         this.invId = invoiceId;
         if (!invoiceId) {
-            this._invoice.getListRoom().subscribe((result) => {
+            this._invoice.getListRoomForCreate().subscribe((result) => {
                 forEach(result, (item) => {
                     this.listRoom.push({ value: item.id, label: item.roomNo });
                 });

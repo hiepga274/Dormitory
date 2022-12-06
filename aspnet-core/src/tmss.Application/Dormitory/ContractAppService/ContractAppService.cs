@@ -67,10 +67,10 @@ namespace tmss.Dormitory.ContractAppService
             return (List<CreateOrEditContractDto>)query;
         }
         
-        public async Task<List<ListRoomDto>> GetListRoomForCreate()
+        public async Task<List<ListRoomDto>> GetListRoomForCreate(long input)
         {
-            IEnumerable<ListRoomDto> query = await _roomRepo.QueryAsync<ListRoomDto>(@"
-                Select Id,RoomNo,UnitPrice from Room where IsDeleted = 0 And Amount<Maxx");
+            string queryString = @"exec GetListRoomForConTract @StudentId = "+input+"  ";
+            IEnumerable<ListRoomDto> query = await _roomRepo.QueryAsync<ListRoomDto>(queryString);
             return query.ToList();
         }
         public async Task<List<ListRoomDto>> GetListRoom()
