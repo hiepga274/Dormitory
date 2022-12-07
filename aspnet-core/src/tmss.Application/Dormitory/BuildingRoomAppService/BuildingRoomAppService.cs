@@ -103,10 +103,9 @@ namespace tmss.Dormitory.BuildingRoomAppService
 
         public async Task<List<StudentForViewDto>> GetListStudentInRoom(long? id)
         {
+            string queryString = @"exec GetListStudentInRoom @RoomId = "+ id +" ";
             IEnumerable<StudentForViewDto> query =
-                await _studentRepo.QueryAsync<StudentForViewDto>(@"
-            select Student.Id, Student.Name as Name,Gender,StudentNo,Cmnd,Phone from Student inner join Contract on Student.Id =Contract.StudentId
-            where RoomId = '" + id + "' and Student.IsDeleted=0 and Contract.IsDeleted=0");
+                await _studentRepo.QueryAsync<StudentForViewDto>(queryString);
             return (List<StudentForViewDto>)query;
         }
         public async Task<List<BuildingForViewDto>> GetBuildingName()
