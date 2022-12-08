@@ -24,7 +24,6 @@
     </div>
     <!-- Make this component ! -->
     <!-- -->
-
     <div headerNotifications class="kt-header__topbar-item dropdown" dropdown id="header_notification_bar"></div>
     <div class="kt-header__topbar-item kt-header__topbar-item--user ng-star-inserted  dropdown" dropdown
         placement="bottom-right">
@@ -53,46 +52,6 @@
                 </div>
             </div>
             <div class="kt-notification user-profile-menu">
-                <a href="javascript:;" class="kt-notification__item linked-accounts" (click)="showLinkedAccounts()">
-                    <div class="kt-notification__item-icon">
-                        <i class="flaticon-user-settings"></i>
-                    </div>
-                    <div class="kt-notification__item-details">
-                        <div class="kt-notification__item-title kt-font-bold">
-                            <span>
-                                {{"ManageLinkedAccounts" | localize}}
-                            </span>
-                        </div>
-                    </div>
-                </a>
-                <div class="kt-notification__custom py-0 linked-accounts">
-                    <ul class="kt-nav linked-accounts" *ngIf="recentlyLinkedUsers && recentlyLinkedUsers.length"
-                        [attr.aria-label]="l('LinkedAccounts')">
-                        <li *ngFor="let linkedUser of recentlyLinkedUsers" class="kt-nav__item py-2">
-                            <a href="javascript:;" (click)="switchToLinkedUser(linkedUser)"
-                                class="recently-linked-user">
-                                <span class="kt-nav__link-bullet">
-                                    <span></span>
-                                </span>
-                                <span class="kt-nav__link-text">
-                                    {{getShownUserName(linkedUser)}}
-                                </span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <a *ngIf="appSession.application.userDelegationIsEnabled && !isImpersonatedLogin" href="javascript:;" class="kt-notification__item" (click)="showUserDelegations()">
-                    <div class="kt-notification__item-icon">
-                        <i class="flaticon-users"></i>
-                    </div>
-                    <div class="kt-notification__item-details">
-                        <div class="kt-notification__item-title kt-font-bold">
-                            <span>
-                                {{"ManageUserDelegations" | localize}}
-                            </span>
-                        </div>
-                    </div>
-                </a>
                 <a href="javascript:;" class="kt-notification__item" (click)="changePassword()">
                     <div class="kt-notification__item-icon">
                         <i class="flaticon-more-v6"></i>
@@ -105,96 +64,10 @@
                         </div>
                     </div>
                 </a>
-                <a href="javascript:;" class="kt-notification__item" (click)="showLoginAttempts()">
-                    <div class="kt-notification__item-icon">
-                        <i class="flaticon-list"></i>
-                    </div>
-                    <div class="kt-notification__item-details">
-                        <div class="kt-notification__item-title kt-font-bold">
-                            <span>
-                                {{"LoginAttempts" | localize}}
-                            </span>
-                        </div>
-                    </div>
-                </a>
-                <a href="javascript:;" class="kt-notification__item" (click)="changeProfilePicture()">
-                    <div class="kt-notification__item-icon">
-                        <i class="flaticon-profile-1"></i>
-                    </div>
-                    <div class="kt-notification__item-details">
-                        <div class="kt-notification__item-title kt-font-bold">
-                            <span>
-                                {{"ChangeProfilePicture" | localize}}
-                            </span>
-                        </div>
-                    </div>
-                </a>
-                <a href="javascript:;" class="kt-notification__item" (click)="changeMySettings()">
-                    <div class="kt-notification__item-icon">
-                        <i class="flaticon-cogwheel"></i>
-                    </div>
-                    <div class="kt-notification__item-details">
-                        <div class="kt-notification__item-title kt-font-bold">
-                            <span>
-                                {{"MySettings" | localize}}
-                            </span>
-                        </div>
-                    </div>
-                </a>
-                <a *ngIf="!('Pages.Administration.UiCustomization' | permission)" routerLink="admin/ui-customization"
-                    class="kt-notification__item">
-                    <div class="kt-notification__item-icon">
-                        <i class="flaticon-medical"></i>
-                    </div>
-                    <div class="kt-notification__item-details">
-                        <div class="kt-notification__item-title kt-font-bold">
-                            <span>
-                                {{"VisualSettings" | localize}}
-                            </span>
-                        </div>
-                    </div>
-                </a>
-                <a href="javascript:;" class="kt-notification__item" (click)="downloadCollectedData()">
-                    <div class="kt-notification__item-icon">
-                        <i class="flaticon-download"></i>
-                    </div>
-                    <div class="kt-notification__item-details">
-                        <div class="kt-notification__item-title kt-font-bold">
-                            <span>
-                                {{"DownloadCollectedData" | localize}}
-                            </span>
-                        </div>
-                    </div>
-                </a>
                 <div class="kt-notification__custom">
                     <a (click)="logout()" class="btn btn-label-brand btn-sm btn-bold">{{"Logout" | localize}}</a>
                 </div>
             </div>
-        </div>
-    </div>
-    <div *ngIf="(isHost || ('App.ChatFeature' | checkFeature)) && !chatConnected"
-        class="kt-header__topbar-item dropdown">
-        <div class="kt-header__topbar-wrapper">
-            <span class="kt-header__topbar-icon kt-header__topbar-icon--brand">
-                <img *ngIf="!chatConnected" src="./assets/common/images/loading.gif" style="width: 23px;"
-                    tooltip="{{'ChatIsConnecting' | localize}}" placement="left" />
-            </span>
-        </div>
-    </div>
-    <div id="kt_quick_sidebar_toggle" [hidden]="!(isHost || ('App.ChatFeature' | checkFeature)) || !chatConnected"
-        class="kt-header__topbar-item dropdown">
-        <div class="kt-header__topbar-wrapper">
-            <span class="kt-header__topbar-icon kt-header__topbar-icon--brand">
-                <div *ngIf="unreadChatMessageCount">
-                    <i class="flaticon-chat-2 unread-notification"></i>
-                    <span class="kt-badge kt-badge--primary unread-notification-count">
-                        {{unreadChatMessageCount}}
-                    </span>
-                </div>
-                <div *ngIf="!unreadChatMessageCount">
-                    <i class="flaticon-chat-2"></i>
-                </div>
-            </span>
         </div>
     </div>
 </div>
