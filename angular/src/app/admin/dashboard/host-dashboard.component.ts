@@ -33,7 +33,7 @@ export class HostDashboardComponent extends AppComponentBase implements OnInit {
       domain: ['#a7e082', '#be3030', '#1aa4f3']
     };
 
-    view: any[] = [900, 600];
+    view: any[] = [1200, 600];
 
     constructor(
         injector: Injector,

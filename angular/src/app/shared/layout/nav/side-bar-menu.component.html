@@ -6,7 +6,7 @@
         [attr.data-ktmenu-vertical]="1" [attr.data-ktmenu-scroll]="ui.getIsMenuScrollable() ? 1 : 0"
         [attr.data-ktmenu-dropdown]="ui.isSubmenuToggleDropdown() ? 1 : 0" (mouseenter)="mouseEnter($event)"
         (mouseleave)="mouseLeave($event)" [class]="ui.getLeftAsideClass()">
-        <ul class="kt-menu__nav" class="kt-menu__nav">
+        <ul class="kt-menu__nav" style="background-color: #252525;">
             <li class="kt-menu__item kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"
                 *ngIf="currentTheme.baseSettings.menu.searchActive">
                 <menu-search-bar></menu-search-bar>
@@ -76,7 +76,7 @@
 
     <ng-container *ngIf="!item.badge; else mMenuLinkBadge">
         <!-- menu item title text -->
-        <span class="kt-menu__link-text">
+        <span class="kt-menu__link-text" style="color:rgb(50, 150, 251);">
             {{ parentRowIndex }}{{ rowIndex }}. {{ item.name | localize }}
         </span>
     </ng-container>
@@ -85,7 +85,7 @@
         <!-- menu item with badge -->
         <span class="kt-menu__link-title">
             <span class="kt-menu__link-wrap">
-                <span class="kt-menu__link-text">
+                <span class="kt-menu__link-text" >
                     {{ parentRowIndex }}{{ rowIndex }}. {{ item.name | localize }}
                 </span>
                 <span class="kt-menu__link-badge">

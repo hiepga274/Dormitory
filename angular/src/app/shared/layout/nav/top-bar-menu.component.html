@@ -2,9 +2,9 @@
 <button class="kt-header-menu-wrapper-close" id="kt_header_menu_mobile_close_btn">
     <i class="la la-close"></i>
 </button>
-<div ktOffcanvas [options]="offcanvasOptions" class="kt-header-menu-wrapper" id="kt_header_menu_wrapper">
+<div ktOffcanvas [options]="offcanvasOptions"  class="kt-header-menu-wrapper" id="kt_header_menu_wrapper">
     <div id="kt_header_menu" ktMenu [options]="menuOptions" class="kt-header-menu kt-header-menu-mobile ">
-        <ul class="kt-menu__nav">
+        <ul class="kt-menu__nav" >
             <li  class="kt-menu__item kt-menu__item--submenu" aria-haspopup="true"
                 data-ktmenu-submenu-toggle="hover">
                 <menu-search-bar *ngIf="isMobileDevice()"></menu-search-bar>
@@ -67,7 +67,6 @@
                 <span class="kt-menu__arrow" [ngClass]="{ 'kt-menu__arrow--adjust': !parentItem }"></span>
                 <ul *ngIf="item.items.length" class="kt-menu__subnav">
                     <ng-container *ngFor="let child of item.items">
-
                         <ng-container [ngTemplateOutlet]="kt_menu"
                             [ngTemplateOutletContext]="{ item: child, parentItem: item, depth: (depth + 1) }">
                         </ng-container>
@@ -91,14 +90,14 @@
 </ng-template>
 
 <!-- item inner -->
-<ng-template #kt_menu_item_inner let-item="item" let-parentItem="parentItem">
+<ng-template #kt_menu_item_inner let-item="item" let-parentItem="parentItem"  >
     <!-- if menu item has icon -->
     <i *ngIf="item.icon" class="kt-menu__link-icon" [ngClass]="item.icon"></i>
 
     <ng-container>
         <span class="kt-menu__item-here"></span>
         <!-- menu item title text -->
-        <span class="kt-menu__link-text">
+        <span class="kt-menu__link-text" >
             {{item.name | localize}}
         </span>
     </ng-container>

@@ -1,4 +1,5 @@
-﻿import { NgModule } from '@angular/core';
+﻿import { ContractComponent } from './../admin/dormitory/contract/contract.component';
+import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from '@app/shared/components/home/home.component';
 
@@ -10,7 +11,7 @@ import { HomeComponent } from '@app/shared/components/home/home.component';
                 children: [
                     { path: 'home', component: HomeComponent, data: { permission: ''} },
                     { path: '', redirectTo: 'home', pathMatch: 'full' },
-                    { path: '**', redirectTo: 'home' }
+                    { path: '**', redirectTo: 'home' },
                 ]
             }
         ])

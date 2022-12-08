@@ -4,7 +4,7 @@
         <div [class]="containerClass">
             <div class="kt-subheader__main">
                 <h3 class="kt-subheader__title">
-                    <span class="kt-subheader__desc">{{l("Quản lý ký túc xá")}}</span>
+                    <span >{{l("Quản lý ký túc xá")}}</span>
                 </h3>
                 <span class="kt-subheader__separator kt-subheader__separator--v"></span>
                 <span class="kt-subheader__desc">{{l("Quản lý hóa đơn điện nước")}}</span>
@@ -26,7 +26,7 @@
     </div>
     <div [class]="containerClass + ' kt-grid__item kt-grid__item--fluid'">
         <div class="kt-portlet kt-portlet--mobile">
-            <div class="kt-portlet__body">
+            <div class="kt-portlet__body" style="background-color: black;">
                 <div [class]="containerClass + ' kt-grid__item kt-grid__item--fluid'">
                     <div class="kt-portlet kt-portlet--mobile">
                         <div class="kt-portlet__body">
@@ -59,7 +59,7 @@
                                             <i class="tmss-fa fas fa-redo mr-1"></i>{{l("Làm mới")}}
                                         </button>
                                         <button  (click)="search()"  class="tmss-btn btn-outline-primary"
-                                            type="submit"><i class="fa fa-search mr-1"></i>
+                                            type="submit"><i class="fa fa-search mr-1"></i>{{l("Tìm kiếm")}}
                                         </button>
                                     </div>
                                 </div>
@@ -78,7 +78,7 @@
                                 [paginationParams]="paginationParams"
                                 [rowData]="rowData"
                                 [frameworkComponents]="frameworkComponents"
-                                [height]="'575px'"
+                                [height]="'490px'"
                             ></grid-table>
                         </div>
                     </div>
