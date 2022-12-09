@@ -24,18 +24,20 @@
                                         </div>
                                     </div>
                                     <div class="col-md-4" *ngIf="!contract.id">
-                                        <tmss-multi-column-dropdown
-                                        [placeholder]="choseStudent"
-                                        (ngModelChange)="onChangeSelection($event)"
-                                        [height]="'250px'"
-                                        [list]="listStudent"
-                                        name="student"
-                                        [columnDefs]="contractColdef"
-                                        [defaultColDef]="defaultColDef"
-                                        dataField="id"
-                                        [(ngModel)]="contract.studentId"
-                                        displayField="name"
-                                    ></tmss-multi-column-dropdown>
+                                        <div class="form-group">
+                                            <tmss-multi-column-dropdown
+                                            [placeholder]="choseStudent"
+                                            (ngModelChange)="onChangeSelection($event)"
+                                            [height]="'250px'"
+                                            [list]="listStudent"
+                                            name="student"
+                                            [columnDefs]="contractColdef"
+                                            [defaultColDef]="defaultColDef"
+                                            dataField="id"
+                                            [(ngModel)]="contract.studentId"
+                                            displayField="name"
+                                        ></tmss-multi-column-dropdown>
+                                        </div>
                                     </div>
                                     <div class="col-md-4" *ngIf="contract.id">
                                         <div class="form-group">
@@ -43,7 +45,23 @@
                                             [items]="listStudentEdit" [(ngModel)]="contract.studentId" [text]="l('Tên sinh viên')" name="Student" required></tmss-combobox>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4" *ngIf="!contract.id">
+                                        <div class="form-group">
+
+                                            <tmss-multi-column-dropdown
+                                            [placeholder]="choseRoom"
+                                            [height]="'250px'"
+                                            [list]="listRoomCreate"
+                                            name="room"
+                                            [columnDefs]="roomColdef"
+                                            [defaultColDef]="defaultColDef"
+                                            dataField="id"
+                                            [(ngModel)]="contract.roomId"
+                                            displayField="room"
+                                        ></tmss-multi-column-dropdown>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4"*ngIf="contract.id">
                                         <div class="form-group">
                                             <tmss-combobox [className]="'ipStRequire'"  [isRequired]="true" [isDisabled]="contract.id"
                                             [items]="listRoom" [(ngModel)]="contract.roomId" [text]="l('Tên phòng')" name="RoomId" required></tmss-combobox>

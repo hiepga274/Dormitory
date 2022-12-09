@@ -871,10 +871,15 @@ export class ContractServiceProxy {
     }
 
     /**
+     * @param input (optional) 
      * @return Success
      */
-    getListRoomForCreate(): Observable<ListRoomDto[]> {
-        let url_ = this.baseUrl + "/api/services/app/Contract/GetListRoomForCreate";
+    getListRoomForCreate(input: number | undefined): Observable<ListRoomDto[]> {
+        let url_ = this.baseUrl + "/api/services/app/Contract/GetListRoomForCreate?";
+        if (input === null)
+            throw new Error("The parameter 'input' cannot be null.");
+        else if (input !== undefined)
+            url_ += "input=" + encodeURIComponent("" + input) + "&"; 
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -1773,6 +1778,61 @@ export class InvoiceServiceProxy {
     }
 
     protected processGetListRoom(response: HttpResponseBase): Observable<ListRoomDto[]> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            if (Array.isArray(resultData200)) {
+                result200 = [] as any;
+                for (let item of resultData200)
+                    result200!.push(ListRoomDto.fromJS(item));
+            }
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<ListRoomDto[]>(<any>null);
+    }
+
+    /**
+     * @return Success
+     */
+    getListRoomForCreate(): Observable<ListRoomDto[]> {
+        let url_ = this.baseUrl + "/api/services/app/Invoice/GetListRoomForCreate";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",			
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetListRoomForCreate(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetListRoomForCreate(<any>response_);
+                } catch (e) {
+                    return <Observable<ListRoomDto[]>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<ListRoomDto[]>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetListRoomForCreate(response: HttpResponseBase): Observable<ListRoomDto[]> {
         const status = response.status;
         const responseBlob = 
             response instanceof HttpResponse ? response.body : 
@@ -4219,6 +4279,7 @@ export interface ICreateOrEditContractDto {
 export class ListRoomDto implements IListRoomDto {
     roomNo!: string | undefined;
     unitPrice!: number;
+    empty!: number;
     id!: number | undefined;
 
     constructor(data?: IListRoomDto) {
@@ -4234,6 +4295,7 @@ export class ListRoomDto implements IListRoomDto {
         if (_data) {
             this.roomNo = _data["roomNo"];
             this.unitPrice = _data["unitPrice"];
+            this.empty = _data["empty"];
             this.id = _data["id"];
         }
     }
@@ -4249,6 +4311,7 @@ export class ListRoomDto implements IListRoomDto {
         data = typeof data === 'object' ? data : {};
         data["roomNo"] = this.roomNo;
         data["unitPrice"] = this.unitPrice;
+        data["empty"] = this.empty;
         data["id"] = this.id;
         return data; 
     }
@@ -4257,6 +4320,7 @@ export class ListRoomDto implements IListRoomDto {
 export interface IListRoomDto {
     roomNo: string | undefined;
     unitPrice: number;
+    empty: number;
     id: number | undefined;
 }
 

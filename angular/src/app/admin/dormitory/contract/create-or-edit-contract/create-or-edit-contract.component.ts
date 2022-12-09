@@ -1,3 +1,4 @@
+import { DataFormatService } from '@app/shared/common/services/data-format.service';
 import { CustomColDef } from '@app/shared/common/models/base.model';
 import { CreateOrEditContractDto, ContractServiceProxy, ListRoomDto, ListStudentDto } from './../../../../../shared/service-proxies/service-proxies';
 import { AppComponentBase } from '@shared/common/app-component-base';
@@ -21,8 +22,10 @@ export class CreateOrEditContractComponent extends AppComponentBase implements O
 
     active: boolean = false;
     contractColdef: CustomColDef[];
+    roomColdef: CustomColDef[];
     saving: boolean = false;
     choseStudent : string = 'Chọn sinh viên';
+    choseRoom : string = 'Chọn phòng';
     defaultColDef = {
         floatingFilter: true,
         flex:false,
@@ -38,10 +41,12 @@ export class CreateOrEditContractComponent extends AppComponentBase implements O
     };
     listRoom: { value: number, label: string ,price: number }[] = [];
     listStudent:ListStudentDto[] = [];
+    listRoomCreate:ListRoomDto[] = [];
     listStudentEdit:{ value: number, label: string }[] = [];
     constructor(
         injector: Injector,
-        private _contract :ContractServiceProxy
+        private dataFormatService: DataFormatService,
+        private _contract :ContractServiceProxy,
 
     ) {
         super(injector);
@@ -59,6 +64,30 @@ export class CreateOrEditContractComponent extends AppComponentBase implements O
                 field: 'studentNo',
                 cellClass: ['text-left'],
                 flex: 1
+            },
+        ];
+        this.roomColdef = [
+            {
+                headerName: 'Tên phòng',
+                headerTooltip: 'Tên phòng',
+                field: 'roomNo',
+                cellClass: ['text-left'],
+                flex: 2
+            },
+            {
+                headerName: 'Chỗ trống',
+                headerTooltip: 'Số chỗ trống',
+                field: 'empty',
+                cellClass: ['text-left'],
+                flex: 1
+            },
+            {
+                headerName: 'Giá',
+                headerTooltip: 'Giá',
+                field: 'unitPrice',
+                valueFormatter: (params) => this.dataFormatService.moneyFormat(params.value),
+                cellClass: ['text-left'],
+                flex: 2
             },
         ];
     }
@@ -126,14 +155,13 @@ export class CreateOrEditContractComponent extends AppComponentBase implements O
         this.active = false;
         this.modal.hide();
         this.listRoom = [];
+        this.listRoomCreate = [];
         this.listStudent = [];
     }
     onChangeSelection(event){
-        this.listRoom = [];
+        this.listRoomCreate = [];
         this._contract.getListRoomForCreate(event).subscribe((result) => {
-            forEach(result, (item) => {
-                this.listRoom.push({ value: item.id, label: item.roomNo ,price: item.unitPrice});
-            });
+            this.listRoomCreate = result;
         });
     }
 }
