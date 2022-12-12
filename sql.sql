@@ -1,6 +1,6 @@
 ﻿	
 	--Store for Get list student 
-		CREATE PROCEDURE [dbo].[GetAllOrFilterStudent]
+		create PROCEDURE [dbo].[GetAllOrFilterStudent]
 			@Name nvarchar(255),
 			@Gender int,
 			@StudentNo nvarchar(64),

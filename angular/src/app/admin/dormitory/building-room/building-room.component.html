@@ -62,7 +62,7 @@
                                     [disabled]="!selectedRoomId"  >
                                     <i class="tmss-fa fas fa-trash-alt mr-1"></i>{{ l("Delete") }}
                                     </button>
-                                    <button type="button"   class="tmss-btn btn-outline-primary" (click)="listStudent()">
+                                    <button type="button" [disabled]="!selectedRoomId"  class="tmss-btn btn-outline-primary" (click)="listStudent()">
                                     <i class="tmss-fa fas fa-edit mr-1"></i>{{ l("Xem danh sách sinh viên thuộc phòng này") }}
                                     </button>
                                 </div>

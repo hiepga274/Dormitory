@@ -53,6 +53,8 @@ namespace tmss.Dormitory.BuildingRoomAppService
             DateTime now = DateTime.Now;
             await _buildingRepo.QueryAsync(@"
             Update Building Set IsDeleted = 1, DeletionTime ='" + now.ToString("yyyy/MM/dd ") + "' where Id = '" + input.Id + "'");
+            await _roomRepo.QueryAsync(@"
+            Update Room Set IsDeleted = 1, DeletionTime ='" + now.ToString("yyyy/MM/dd ") + "' where BuildingId = '" + input.Id + "'");
         }
 
         public async Task<List<CreateOrEditBuildingDto>> GetBuildingForEdit(long? id)
@@ -78,12 +80,12 @@ namespace tmss.Dormitory.BuildingRoomAppService
         protected virtual async Task CreateRoom(CreateOrEditRoomDto input)
         {
             await _roomRepo.QueryAsync<CreateOrEditRoomDto>(@"
-            Insert into Room (IsDeleted,BuildingId,RoomNo,UnitPrice,Maxx,Amount) Values (0,'" + input.BuildingId + "',N'" + input.RoomNo + "','"+input.UnitPrice+"','"+input.Maxx+"','"+input.Amount+"')");
+            Insert into Room (IsDeleted,BuildingId,RoomNo,UnitPrice,Maxx,Amount) Values (0,'" + input.BuildingId + "',N'" + input.RoomNo + "','"+input.UnitPrice+"','"+input.Maxx+"',0)");
         }
         protected virtual async Task UpdateRoom(CreateOrEditRoomDto input)
         {
             await _roomRepo.QueryAsync<CreateOrEditRoomDto>(@"
-            Update Room Set RoomNo = N'" + input.RoomNo + "', UnitPrice = '" + input.UnitPrice + "', Maxx = '"+input.Maxx+"', Amount = '"+input.Amount+"' Where Id = '" + input.Id + "'  ");
+            Update Room Set RoomNo = N'" + input.RoomNo + "', UnitPrice = '" + input.UnitPrice + "', Maxx = '"+input.Maxx+"' Where Id = '" + input.Id + "'  ");
         }
 
         public virtual async Task DeleteRoom(EntityDto<long> input)
