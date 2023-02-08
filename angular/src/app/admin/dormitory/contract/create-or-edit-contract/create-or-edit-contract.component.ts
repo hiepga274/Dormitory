@@ -19,7 +19,7 @@ export class CreateOrEditContractComponent extends AppComponentBase implements O
     @Output() modalSave: EventEmitter<any> = new EventEmitter<any>();
 
     contract: CreateOrEditContractDto = new CreateOrEditContractDto();
-
+    newDate;
     active: boolean = false;
     contractColdef: CustomColDef[];
     roomColdef: CustomColDef[];
@@ -98,12 +98,12 @@ export class CreateOrEditContractComponent extends AppComponentBase implements O
 
         if (!invoiceId) {
             this.contract = new CreateOrEditContractDto();
-
             this._contract.getListStudentForCreate().subscribe((result) => {
                this.listStudent = result;
             });
             this.contract.id = invoiceId;
             this.contract.contractDate = moment();
+            this.contract.startDate = moment();
             this.active = true;
             this.modal.show();
         } else {
@@ -163,5 +163,9 @@ export class CreateOrEditContractComponent extends AppComponentBase implements O
         this._contract.getListRoomForCreate(event).subscribe((result) => {
             this.listRoomCreate = result;
         });
+    }
+    onChangeStartDate() {
+        this.newDate = new Date(this.contract.startDate.toString());
+        this.contract.endDate = this.newDate.setFullYear(this.newDate.getFullYear() + 1);
     }
 }

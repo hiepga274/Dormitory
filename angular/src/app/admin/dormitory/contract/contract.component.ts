@@ -35,8 +35,8 @@ export class ContractComponent extends AppComponentBase implements OnInit {
     };
 
     filterRoom: number;
-    startDate= moment().startOf('month');
-    endDate= moment().endOf('month');
+    startDate= moment().add(-1, 'year').startOf('month');
+    endDate= moment();
     listRoom: { value: number, label: string  }[] = [];
 
     sorting: string = "";
@@ -242,4 +242,6 @@ export class ContractComponent extends AppComponentBase implements OnInit {
         this.onGridReady(this.paginationParams);
 
     }
+
+
 }

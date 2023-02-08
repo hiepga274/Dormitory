@@ -71,17 +71,17 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <tmss-datepicker [isDisabled]="true"  [isRequired]="true" [showIcon]="true" [(ngModel)]="contract.contractDate" [text]="l('Ngày lập hđ:')" name="ContractDate"></tmss-datepicker>
+                                            <tmss-datepicker [isDisabled]="true"  [isRequired]="true" [showIcon]="true" [(ngModel)]="contract.contractDate"[text]="l('Ngày lập hđ:')" name="ContractDate" ></tmss-datepicker>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <tmss-datepicker  [isRequired]="true" [showIcon]="true" [(ngModel)]="contract.startDate" [text]="l('Ngày bắt đầu:')" name="StartDate"></tmss-datepicker>
+                                            <tmss-datepicker  [isRequired]="true" [showIcon]="true" [(ngModel)]="contract.startDate" [text]="l('Ngày bắt đầu:')" name="StartDate" (change)="onChangeStartDate()"></tmss-datepicker>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <tmss-datepicker  [isRequired]="true" [showIcon]="true" [(ngModel)]="contract.endDate" [text]="l('Ngày kết thúc:')" name="EndDate"></tmss-datepicker>
+                                            <tmss-datepicker  [isDisabled]="true" [isRequired]="true" [showIcon]="true" [(ngModel)]="contract.endDate" [text]="l('Ngày kết thúc:')" name="EndDate"></tmss-datepicker>
                                         </div>
                                     </div>
 

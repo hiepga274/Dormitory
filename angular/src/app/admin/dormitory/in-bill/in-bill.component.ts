@@ -34,8 +34,8 @@ export class InBillComponent extends AppComponentBase implements OnInit {
     };
 
     filterRoom: number;
-    startDate= moment().startOf('month');
-    endDate= moment().endOf('month');
+    startDate= moment().add(-1, 'year').startOf('month');
+    endDate= moment();
     filterIsPaid: boolean = undefined;
 
     sorting: string = "";

@@ -32,8 +32,8 @@ export class OutBillComponent extends AppComponentBase implements OnInit {
         agCheckboxRendererComponent: AgCheckboxRendererComponent
     };
 
-    startDate= moment().startOf('month');
-    endDate= moment().endOf('month');
+    startDate= moment().add(-1, 'year').startOf('month');
+    endDate= moment();
 
     sorting: string = "";
     advancedFiltersAreShown: boolean = false;
