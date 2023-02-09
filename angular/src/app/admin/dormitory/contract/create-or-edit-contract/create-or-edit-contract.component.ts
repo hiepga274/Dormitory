@@ -104,6 +104,7 @@ export class CreateOrEditContractComponent extends AppComponentBase implements O
             this.contract.id = invoiceId;
             this.contract.contractDate = moment();
             this.contract.startDate = moment();
+            this.contract.endDate = moment().add(1, 'year');
             this.active = true;
             this.modal.show();
         } else {

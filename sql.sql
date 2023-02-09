@@ -1,6 +1,6 @@
 ﻿	
 	--Store for Get list student 
-		create PROCEDURE [dbo].[GetAllOrFilterStudent]
+		ALTER PROCEDURE [dbo].[GetAllOrFilterStudent]
 			@Name nvarchar(255),
 			@Gender int,
 			@StudentNo nvarchar(64),
@@ -16,7 +16,7 @@
 			and (@IsRoom is null or IsRoom = @IsRoom)
 
 	--Trigger update Amount of Room and Status of Student when insert contract
-		CREATE trigger trg_contract On CONTRACT after 
+		ALTER trigger trg_contract On CONTRACT after 
 			insert 
 			as begin
 			Declare @a int = (Select StudentId from inserted)
@@ -27,7 +27,7 @@
 			END
 		go
 	-- trigger update Amount of Room and Status of Student when update of delete contract
-		create trigger trg_contract_delete On Contract after 
+		ALTER trigger trg_contract_delete On Contract after 
 			update 
 			as begin 
 			Declare @dele bit = (Select IsDeleted from inserted)
@@ -47,7 +47,7 @@
 		end
 
 	--Store get list Invoice
-		Create Procedure [dbo].[GetAllOrFilterInvoice]
+		ALTER Procedure [dbo].[GetAllOrFilterInvoice]
 			@RoomId int,
 			@StartDate nvarchar(50),
 			@EndDate nvarchar(50),
@@ -59,7 +59,7 @@
 			and (@IsPaid is null or IsPaid = @IsPaid)
 
 	--Store get list InBill
-		Create Procedure [dbo].[GetAllOrFilterInBill]
+		ALTER Procedure [dbo].[GetAllOrFilterInBill]
 			@RoomId int,
 			@StartDate nvarchar(50),
 			@EndDate nvarchar(50),
@@ -72,7 +72,7 @@
 			and (@IsPaid is null or IsPaid = @IsPaid)
 
 	--Store get list OutBill
-		Create Procedure [dbo].[GetAllOrFilterOutBill]
+		ALTER Procedure [dbo].[GetAllOrFilterOutBill]
 			@StartDate nvarchar(50),
 			@EndDate nvarchar(50)
 			As
@@ -81,7 +81,7 @@
 			(Date between @StartDate and @EndDate)
 
 	--Store get list Contract
-		Create Procedure [dbo].[GetAllOrFilterContract]
+		ALTER Procedure [dbo].[GetAllOrFilterContract]
 			@RoomId int,
 			@StartDate nvarchar(50),
 			@EndDate nvarchar(50)
@@ -96,7 +96,7 @@
 
 
 	--Store get total OutBill For Dashboard
-		Create Procedure [dbo].[GetOutBillForDashboard]
+		ALTER Procedure [dbo].[GetOutBillForDashboard]
 			@Date nvarchar(50)
 			As
 			SELECT
@@ -108,7 +108,7 @@
 			ORDER BY Month;
 
 	--Store get total InBill For Dashboard
-		Create Procedure [dbo].[GetInBillForDashboard]
+		ALTER Procedure [dbo].[GetInBillForDashboard]
 			@Date nvarchar(50)
 			As
 			SELECT
@@ -120,7 +120,7 @@
 			ORDER BY Month;
 
 	--Store get total Invoice For Dashboard
-	Create Procedure [dbo].[GetInvoiceForDashboard]
+	ALTER Procedure [dbo].[GetInvoiceForDashboard]
 		@Date nvarchar(50)
 		As
 		SELECT
@@ -132,7 +132,7 @@
 		ORDER BY Month;
 
 	--Store get total Contract For Dashboard
-		Create Procedure [dbo].[GetContractForDashboard]
+		CREATE Procedure [dbo].[GetContractForDashboard]
 			@Date nvarchar(50)
 			As
 			SELECT
@@ -150,7 +150,7 @@
 
 	
 	--Store get list Room for create Invoice
-		Create Procedure GetListRoomForCreateInvoice
+		CREATE Procedure GetListRoomForCreateInvoice
 			As
 			Begin
 			Select Id,RoomNo from Room where IsDeleted = 0 and Id Not In 
@@ -271,4 +271,20 @@
 				IF (@@TRANCOUNT > 0) ROLLBACK TRANSACTION
 			EndSave:
 			GO
+
+	--update 9/2/2023
+	-- get total monry of contract 
+			ALTER Procedure GetTotalMoneyContract
+			@Date nvarchar(50)
+			As
+			SELECT
+			DATEPART(MONTH, ContractDate) AS Month,
+			SUM(Room.UnitPrice) AS TotalMoney
+			FROM Contract 
+			INNER JOIN Room ON Contract.RoomId=Room.Id
+			where YEAR(ContractDate)=YEAR(@Date) and Contract.IsDeleted=0
+			GROUP BY
+			DATEPART(MONTH, ContractDate)
+			ORDER BY
+			DATEPART(MONTH, ContractDate)
         
