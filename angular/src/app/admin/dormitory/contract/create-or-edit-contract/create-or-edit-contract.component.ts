@@ -98,6 +98,7 @@ export class CreateOrEditContractComponent extends AppComponentBase implements O
 
         if (!invoiceId) {
             this.contract = new CreateOrEditContractDto();
+            this.listRoom = [];
             this._contract.getListStudentForCreate().subscribe((result) => {
                this.listStudent = result;
             });
@@ -110,6 +111,7 @@ export class CreateOrEditContractComponent extends AppComponentBase implements O
         } else {
             this._contract.getContractForEdit(invoiceId)
                 .subscribe((result) => {
+                    this.listRoom = [];
                     this._contract.getListRoom().subscribe((result) => {
                         forEach(result, (item) => {
                             this.listRoom.push({ value: item.id, label: item.roomNo ,price: item.unitPrice});

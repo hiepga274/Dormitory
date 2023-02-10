@@ -191,7 +191,7 @@
 
 	-- update 09/12/2022
 	--Store get list room for create contract
-		CREATE Procedure GetListRoomForConTract
+		ALTER Procedure [dbo].[GetListRoomForConTract]
 		@StudentId int
 		As
 		begin
@@ -201,6 +201,7 @@
 			left join Contract on Room.Id = Contract.RoomId 
 			left join Student on Student.Id = Contract.StudentId
 			where Amount<Maxx and Room.Id Not In (select RoomId from contract inner join student on contract.studentId = Student.Id where gender <>@Gender)
+			GROUP BY Room.Id,RoomNo,UnitPrice,Maxx-Amount
 			ORDER BY Empty
 		END
 	-- update 12/12/2022 
@@ -287,4 +288,23 @@
 			DATEPART(MONTH, ContractDate)
 			ORDER BY
 			DATEPART(MONTH, ContractDate)
-        
+        --set contract timeout
+		ALTER PROCEDURE [dbo].[contract_timeout]
+			AS
+			BEGIN 
+				DECLARE @RoomId int
+				DECLARE cursorContract CURSOR FOR
+				SELECT RoomId FROM dbo.Contract WHERE EndDate < GETDATE() AND IsDeleted =0
+				Open cursorContract
+				FETCH NEXT FROM cursorContract     -- Đọc dòng đầu tiên
+				  INTO @RoomId
+				  WHILE @@FETCH_STATUS = 0          --vòng lặp WHILE khi đọc Cursor thành công
+					BEGIN
+						UPDATE dbo.Room SET Amount = (Select Count(Id) from Contract where IsDeleted =0 and RoomId = @RoomId AND dbo.Contract.EndDate >= GETDATE()) WHERE Id = @RoomId
+					FETCH NEXT FROM cursorContract -- Đọc dòng tiếp
+					  INTO @RoomId
+					END
+				CLOSE cursorContract              -- Đóng Cursor
+				DEALLOCATE cursorContract 
+				UPDATE dbo.Student SET	IsRoom = 0 WHERE Id IN (SELECT StudentId FROM dbo.Contract WHERE EndDate < GETDATE() AND IsDeleted =0)
+			END

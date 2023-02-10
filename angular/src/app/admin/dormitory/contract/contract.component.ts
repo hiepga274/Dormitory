@@ -237,8 +237,8 @@ export class ContractComponent extends AppComponentBase implements OnInit {
 
     clearValueFilter() {
         this.filterRoom = undefined;
-        this.startDate= moment().startOf('month');
-        this.endDate= moment().endOf('month');
+        this.startDate= moment().add(-1, 'year').startOf('month');
+        this.endDate= moment();
         this.onGridReady(this.paginationParams);
 
     }

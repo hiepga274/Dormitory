@@ -14,7 +14,8 @@ import * as moment from 'moment';
 })
 export class HostDashboardComponent extends AppComponentBase implements OnInit {
     contractData: { name: string, value: number }[]= [];
-    yearFilter  = moment();
+    contractMoney: { name: string, value: number }[]= [];
+    yearFilter  = moment().add(-1, 'year');
     outBillData=[0,0,0,0,0,0,0,0,0,0,0,0];
     inBillData=[0,0,0,0,0,0,0,0,0,0,0,0];
     invoiceData=[0,0,0,0,0,0,0,0,0,0,0,0];
@@ -106,6 +107,53 @@ export class HostDashboardComponent extends AppComponentBase implements OnInit {
                     });
                 });
             }
+
+            getContractMoney(year)
+            {
+                this._contract.getTotalContractMoneyForDashboard(year).subscribe(res=>{
+                    this.contractMoney = [];
+                        forEach(res, (item) => {
+                            switch (item.month) {
+                                case "1":
+                                    this.contractMoney.push({ name:"Tháng 1", value: item.total });
+                                    break;
+                                case "2":
+                                    this.contractMoney.push({ name:"Tháng 2", value: item.total });
+                                    break;
+                                case "3":
+                                    this.contractMoney.push({ name:"Tháng 3", value: item.total });
+                                    break;
+                                case "4":
+                                    this.contractMoney.push({ name:"Tháng 4", value: item.total });
+                                    break;
+                                case "5":
+                                    this.contractMoney.push({ name:"Tháng 5", value: item.total });
+                                    break;
+                                case "6":
+                                    this.contractMoney.push({ name:"Tháng 6", value: item.total });
+                                    break;
+                                case "7":
+                                    this.contractMoney.push({ name:"Tháng 7", value: item.total });
+                                    break;
+                                case "8":
+                                    this.contractMoney.push({ name:"Tháng 8", value: item.total });
+                                    break;
+                                case "9":
+                                    this.contractMoney.push({ name:"Tháng 9", value: item.total });
+                                    break;
+                                case "10":
+                                    this.contractMoney.push({ name:"Tháng 10", value: item.total });
+                                    break;
+                                case "11":
+                                    this.contractMoney.push({ name:"Tháng 11", value: item.total });
+                                    break;
+                                case "12":
+                                    this.contractMoney.push({ name:"Tháng 12", value: item.total });
+                                    break;
+                                }
+                            });
+                        });
+                    }
     getInvoice(year)
         {
             this._invoice.getInvoiceForDashboard(year)
@@ -462,6 +510,7 @@ export class HostDashboardComponent extends AppComponentBase implements OnInit {
             this.getInvoice(this.yearFilter);
             this.getOutBill(this.yearFilter);
             this.getInBill(this.yearFilter);
+            this.getContractMoney(this.yearFilter);
             setTimeout(() => {
                 this.setDashboardData();
               }, 1000);
