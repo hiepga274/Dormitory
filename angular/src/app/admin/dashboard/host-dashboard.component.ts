@@ -60,6 +60,7 @@ export class HostDashboardComponent extends AppComponentBase implements OnInit {
         this.getInBill(this.yearFilter);
         this.getOutBill(this.yearFilter);
         this.getInvoice(this.yearFilter);
+        this.getContractMoney(this.yearFilter);
     };
     getContract(year)
     {

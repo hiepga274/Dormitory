@@ -85,7 +85,7 @@ export class InBillComponent extends AppComponentBase implements OnInit {
                 headerName: this.l("Ngày lập hóa đơn"),
                 headerTooltip: this.l("Ngày lập hoá đơn"),
                 field: "date",
-                cellClass: ["text-left"],
+                cellClass: ["text-center"],
                 valueFormatter: (params) => this.dataFormatService.dateFormat(params.value),
                 flex: 2,
             },
@@ -93,7 +93,7 @@ export class InBillComponent extends AppComponentBase implements OnInit {
                 headerName: this.l("Số tiền thu"),
                 headerTooltip: this.l("Số tiền thu"),
                 field: "cost",
-                cellClass: ["text-left"],
+                cellClass: ["text-right"],
                 valueFormatter: (params) => this.dataFormatService.moneyFormat(params.value),
                 flex: 2,
             },
@@ -199,7 +199,7 @@ export class InBillComponent extends AppComponentBase implements OnInit {
 
     clearValueFilter() {
         this.filterRoom = undefined;
-        this.startDate= moment().startOf('month');
+        this.startDate= moment().add(-1,'year').startOf('month');
         this.endDate= moment().endOf('month');
         this.filterIsPaid = undefined;
         this.onGridReady(this.paginationParams);

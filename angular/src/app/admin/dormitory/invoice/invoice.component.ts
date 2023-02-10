@@ -75,7 +75,7 @@ export class InvoiceComponent extends AppComponentBase implements OnInit {
                 headerName: this.l("Số điện cũ"),
                 headerTooltip: this.l("Số điện cũ"),
                 field: "elecOld",
-                cellClass: ["text-left"],
+                cellClass: ["text-right"],
                 valueFormatter: (params) => this.dataFormatService.moneyFormat(params.value),
                 width: 100,
             },
@@ -84,7 +84,7 @@ export class InvoiceComponent extends AppComponentBase implements OnInit {
                 headerName: this.l("Số điện mới"),
                 headerTooltip: this.l("Số điện mới"),
                 field: "elecNew",
-                cellClass: ["text-left"],
+                cellClass: ["text-right"],
                 valueFormatter: (params) => this.dataFormatService.moneyFormat(params.value),
                 width: 100,
             },
@@ -92,7 +92,7 @@ export class InvoiceComponent extends AppComponentBase implements OnInit {
                 headerName: this.l("Số nước cũ"),
                 headerTooltip: this.l("Số nước mới"),
                 field: "warOld",
-                cellClass: ["text-left"],
+                cellClass: ["text-right"],
                 valueFormatter: (params) => this.dataFormatService.moneyFormat(params.value),
                 width: 100,
             },
@@ -100,7 +100,7 @@ export class InvoiceComponent extends AppComponentBase implements OnInit {
                 headerName: this.l("Số nước mới"),
                 headerTooltip: this.l("Số nước mới"),
                 field: "warNew",
-                cellClass: ["text-left"],
+                cellClass: ["text-right"],
                 valueFormatter: (params) => this.dataFormatService.moneyFormat(params.value),
                 width: 100,
             },
@@ -108,7 +108,7 @@ export class InvoiceComponent extends AppComponentBase implements OnInit {
                 headerName: this.l("Đơn giá điện"),
                 headerTooltip: this.l("Đơn giá điện"),
                 field: "elecUnit",
-                cellClass: ["text-left"],
+                cellClass: ["text-right"],
                 valueFormatter: (params) => this.dataFormatService.moneyFormat(params.value),
                 width: 100,
             },
@@ -116,7 +116,7 @@ export class InvoiceComponent extends AppComponentBase implements OnInit {
                 headerName: this.l("Đơn giá nước"),
                 headerTooltip: this.l("Đơn giá nước"),
                 field: "warUnit",
-                cellClass: ["text-left"],
+                cellClass: ["text-right"],
                 valueFormatter: (params) => this.dataFormatService.moneyFormat(params.value),
                 width: 100,
             },
@@ -124,7 +124,7 @@ export class InvoiceComponent extends AppComponentBase implements OnInit {
                 headerName: this.l("Tháng"),
                 headerTooltip: this.l("Tháng"),
                 field: "month",
-                cellClass: ["text-left"],
+                cellClass: ["text-center"],
                 width: 70,
                 valueFormatter: (params) => this.dataFormatService.monthFormat(params.value),
             },
@@ -225,7 +225,7 @@ export class InvoiceComponent extends AppComponentBase implements OnInit {
 
     clearValueFilter() {
         this.filterRoom = undefined;
-        this.startDate= moment().startOf('month');
+        this.startDate= moment().add(-1,'year').startOf('month');
         this.endDate= moment().endOf('month');
         this.filterIsPaid = undefined;
         this.onGridReady(this.paginationParams);

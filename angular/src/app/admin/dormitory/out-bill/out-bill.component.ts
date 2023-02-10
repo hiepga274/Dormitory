@@ -66,7 +66,7 @@ export class OutBillComponent extends AppComponentBase implements OnInit {
                 headerName: this.l("Số tiền chi tiêu"),
                 headerTooltip: this.l("Số tiền chi tiêu"),
                 field: "cost",
-                cellClass: ["text-left"],
+                cellClass: ["text-right"],
                 valueFormatter: (params) => this.dataFormatService.moneyFormat(params.value),
                 flex: 1,
             },
@@ -172,7 +172,7 @@ export class OutBillComponent extends AppComponentBase implements OnInit {
     }
 
     clearValueFilter() {
-        this.startDate= moment().startOf('month');
+        this.startDate= moment().add(-1,'year').startOf('month');
         this.endDate= moment().endOf('month');
         this.onGridReady(this.paginationParams);
 
