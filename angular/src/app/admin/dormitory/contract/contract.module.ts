@@ -6,9 +6,7 @@ import { CommonModule } from '@angular/common';
 import { ContractComponent } from './contract.component';
 
 
-const tabcode_component_dict = {
-    [TABS.CONTRACT]: ContractComponent
-  };
+
 @NgModule({
   imports: [
     CommonDeclareModule
@@ -17,7 +15,4 @@ const tabcode_component_dict = {
     CreateOrEditContractComponent]
 })
 export class ContractModule {
-    static getComponent(tabCode: string) {
-        return tabcode_component_dict[tabCode];
-      }
  }

@@ -20,25 +20,34 @@ import { NgxSpinnerService } from 'ngx-spinner';
                         ]
                     },
                     {
-                        path: 'main',
-                        loadChildren: () => import('app/main/main.module').then(m => m.MainModule), //Lazy load main module
-                        data: { preload: true }
+                        path: 'admin/student',redirectTo: '/app/admin/student', pathMatch: 'full'
+
                     },
                     {
-                        path: 'admin',
-                        loadChildren: () => import('app/admin/admin.module').then(m => m.AdminModule), //Lazy load admin module
-                        data: { preload: true },
-                        canLoad: [AppRouteGuard]
+                        path: 'admin/building',redirectTo: '/app/admin/building', pathMatch: 'full'
                     },
                     {
-                        path: 'admin',
-                        loadChildren: () => import('app/admin/admin.module').then(m => m.AdminModule), //Lazy load admin module
-                        data: { preload: true },
-                        canLoad: [AppRouteGuard]
+                        path: 'admin/invoice',redirectTo: '/app/admin/invoice', pathMatch: 'full'
+                    },
+                    {
+                        path: 'admin/inbill', redirectTo: '/app/admin/inbill', pathMatch: 'full'
+                    },
+                    {
+                        path: 'admin/outbill', redirectTo: '/app/admin/outbill', pathMatch: 'full'
+                    },
+                    {
+                        path: 'contract',redirectTo: '/app/admin/contract', pathMatch: 'full'
                     },
 
                     {
-                        path: '**', redirectTo: 'main/home'
+                        path: 'admin',
+                        loadChildren: () => import('app/admin/admin.module').then(m => m.AdminModule), //Lazy load admin module
+                        data: { preload: true },
+                        canLoad: [AppRouteGuard]
+                    },
+                    {
+                        path:'**',
+                        redirectTo: '/app/admin/hostDashboard'
                     }
                 ]
             }

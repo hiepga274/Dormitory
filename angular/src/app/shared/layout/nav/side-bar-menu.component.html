@@ -53,7 +53,7 @@
         </a>
 
         <!-- if menu item has submenu child then recursively call new menu item component -->
-        <div *ngIf="item.items.length" class="kt-menu__submenu">
+        <!-- <div *ngIf="item.items.length" class="kt-menu__submenu">
             <span class="kt-menu__arrow"></span>
             <ul class="kt-menu__subnav">
                 <ng-container *ngFor="let child of item.items; let childIndex=index">
@@ -62,7 +62,7 @@
                     </ng-container>
                 </ng-container>
             </ul>
-        </div>
+        </div> -->
     </li>
 </ng-template>
 
@@ -76,13 +76,12 @@
 
     <ng-container *ngIf="!item.badge; else mMenuLinkBadge">
         <!-- menu item title text -->
-        <span class="kt-menu__link-text" style="color:rgb(50, 150, 251);">
+        <span class="kt-menu__link-text" style="color:rgb(15, 15, 15);">
             {{ parentRowIndex }}{{ rowIndex }}. {{ item.name | localize }}
         </span>
     </ng-container>
 
-    <ng-template #mMenuLinkBadge let-rowIndex="rowIndex">
-        <!-- menu item with badge -->
+    <!-- <ng-template #mMenuLinkBadge let-rowIndex="rowIndex">
         <span class="kt-menu__link-title">
             <span class="kt-menu__link-wrap">
                 <span class="kt-menu__link-text" >
@@ -93,9 +92,9 @@
                 </span>
             </span>
         </span>
-    </ng-template>
+    </ng-template> -->
 
     <!-- if menu item has submenu child then put arrow icon -->
-    <i *ngIf="item.items.length" class="kt-menu__ver-arrow la la-angle-right"></i>
+    <!-- <i *ngIf="item.items.length" class="kt-menu__ver-arrow la la-angle-right"></i> -->
 </ng-template>
 <!-- END: Left Aside -->

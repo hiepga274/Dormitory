@@ -97,5 +97,11 @@ namespace tmss.Dormitory.ContractAppService
             IEnumerable<ContractForDashboard> query = await _contractRepo.QueryAsync<ContractForDashboard>(queryString);
             return query.ToList();
         }
+        public async Task<List<ContractForDashboard>> GetTotalContractMoneyForDashboard(DateTime? input)
+        {
+            string queryString = @"exec GetTotalMoneyContract @Date = '" + input.Value.ToString("yyyy/MM/dd") + "' ";
+            IEnumerable<ContractForDashboard> query = await _contractRepo.QueryAsync<ContractForDashboard>(queryString);
+            return query.ToList();
+        }
     }
 }

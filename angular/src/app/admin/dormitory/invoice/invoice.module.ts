@@ -4,9 +4,7 @@ import { CommonDeclareModule } from '@app/shared/common-declare.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InvoiceComponent } from './invoice.component';
-const tabcode_component_dict = {
-    [TABS.INVOICE]: InvoiceComponent
-  };
+
 @NgModule({
   imports: [
     CommonDeclareModule
@@ -15,7 +13,4 @@ const tabcode_component_dict = {
                 CreateOrEditInvoiceComponent]
 })
 export class InvoiceModule {
-    static getComponent(tabCode: string) {
-        return tabcode_component_dict[tabCode];
- }
 }

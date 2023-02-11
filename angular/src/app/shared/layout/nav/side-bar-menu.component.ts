@@ -100,7 +100,7 @@ export class SideBarMenuComponent extends AppComponentBase implements OnInit, Af
         }
 
         if (!item.route) {
-            return false;
+            return true;
         }
 
         let urlTree = this.router.parseUrl(this.currentRouteUrl.replace(/\/$/, ''));
@@ -135,6 +135,7 @@ export class SideBarMenuComponent extends AppComponentBase implements OnInit, Af
 	 * @param e Event
 	 */
     mouseEnter(e: Event) {
+
         if (!this.currentTheme.baseSettings.menu.allowAsideMinimizing) {
             return;
         }

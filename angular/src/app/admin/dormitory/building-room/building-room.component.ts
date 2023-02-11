@@ -2,7 +2,7 @@ import { ViewListStudentComponent } from './view-list-student/view-list-student.
 import { DataFormatService } from '@app/shared/common/services/data-format.service';
 import { CreateOrEditRoomComponent } from './create-or-edit-room/create-or-edit-room.component';
 import { CreateOrEditBuildingComponent } from './create-or-edit-building/create-or-edit-building.component';
-import { Component, Injector, ViewChild } from '@angular/core';
+import { Component, Injector, ViewChild, ViewEncapsulation } from '@angular/core';
 import { AppComponentBase } from "@shared/common/app-component-base";
 import * as _ from "lodash";
 import { AgCheckboxRendererComponent } from '@app/shared/common/grid/ag-checkbox-renderer/ag-checkbox-renderer.component';
@@ -12,7 +12,7 @@ import { BuildingForViewDto, BuildingRoomServiceProxy, RoomForViewDto } from '@s
 @Component({
   selector: 'app-building-room',
   templateUrl: './building-room.component.html',
-  styleUrls: ['./building-room.component.less']
+  styleUrls: ['./building-room.component.less'],
 })
 export class BuildingRoomComponent extends AppComponentBase {
     @ViewChild("createOrEditBuilding") createOrEditBuildingModal: CreateOrEditBuildingComponent;

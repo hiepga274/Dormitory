@@ -15,12 +15,12 @@ export class AppNavigationService {
     getMenu(): AppMenu {
         return new AppMenu('MainMenu', 'MainMenu', [
             new AppMenuItem('Dashboard', 'Pages.Administration.Host.Dashboard', 'flaticon-line-graph', '/app/admin/hostDashboard'),
-            new AppMenuItem('Quản lý sinh viên', 'Pages.Master.Common.MstSleDistrict', 'flaticon-users', 'STUDENT'),
-            new AppMenuItem('Quản lý tòa nhà/phòng', 'Pages.Master.Common.MstSleDistrict', 'flaticon-suitcase', 'BUILDING_ROOM'),
-            new AppMenuItem('Quản lý điện nước', 'Pages.Master.Common.MstSleDistrict', 'flaticon2-world', 'INVOICE'),
-            new AppMenuItem('Quản lý phí phát sinh', 'Pages.Master.Common.MstSleDistrict', 'flaticon-refresh', 'INBILL'),
-            new AppMenuItem('Quản lý hóa đơn chi tiêu', 'Pages.Master.Common.MstSleDistrict', 'flaticon-map', 'OUTBILL'),
-            new AppMenuItem('Quản lý hợp đồng', 'Pages.Master.Common.MstSleDistrict', 'flaticon-folder-1', 'CONTRACT'),
+            new AppMenuItem('Quản lý sinh viên', 'Pages.Administration.Host.Dashboard', 'flaticon-users', '/app/admin/student'),
+            new AppMenuItem('Quản lý tòa nhà/phòng', 'Pages.Administration.Host.Dashboard', 'flaticon-suitcase', '/app/admin/building'),
+            new AppMenuItem('Quản lý điện nước', 'Pages.Administration.Host.Dashboard', 'flaticon2-world', '/app/admin/invoice'),
+            new AppMenuItem('Quản lý phí phát sinh', 'Pages.Administration.Host.Dashboard', 'flaticon-refresh', '/app/admin/inbill'),
+            new AppMenuItem('Quản lý hóa đơn chi tiêu', 'Pages.Administration.Host.Dashboard', 'flaticon-map', '/app/admin/outbill'),
+            new AppMenuItem('Quản lý hợp đồng', 'Pages.Administration.Host.Dashboard', 'flaticon-folder-1', '/app/admin/contract'),
         ], this._permissionCheckerService);
     }
 
@@ -47,9 +47,7 @@ export class AppNavigationService {
     }
 
     showMenuItem(menuItem: AppMenuItem): boolean {
-        if (menuItem.permissionName === 'Pages.Administration.Tenant.SubscriptionManagement' && this._appSessionService.tenant && !this._appSessionService.tenant.edition) {
-            return false;
-        }
+
 
         let hideMenuItem = false;
 

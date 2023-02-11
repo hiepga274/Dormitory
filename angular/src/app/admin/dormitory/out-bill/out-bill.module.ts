@@ -4,9 +4,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OutBillComponent } from './out-bill.component';
 import { TABS } from '@app/shared/constants/tab-keys';
-const tabcode_component_dict = {
-    [TABS.OUTBILL]: OutBillComponent
-  };
+
 @NgModule({
   imports: [
     CommonDeclareModule
@@ -15,7 +13,4 @@ const tabcode_component_dict = {
                 CreateOrEditOutBillComponent],
 })
 export class OutBillModule {
-    static getComponent(tabCode: string) {
-        return tabcode_component_dict[tabCode];
-      }
  }

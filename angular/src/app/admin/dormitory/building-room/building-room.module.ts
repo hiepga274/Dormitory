@@ -6,9 +6,6 @@ import { NgModule } from '@angular/core';
 import { BuildingRoomComponent } from './building-room.component';
 import { CommonDeclareModule } from '@app/shared/common-declare.module';
 
-const tabcode_component_dict = {
-    [TABS.BUILDING_ROOM]: BuildingRoomComponent
-  };
 @NgModule({
   imports: [
     CommonDeclareModule
@@ -19,7 +16,4 @@ const tabcode_component_dict = {
                 ViewListStudentComponent],
 })
 export class BuildingRoomModule {
-    static getComponent(tabCode: string) {
-        return tabcode_component_dict[tabCode];
-      }
 }
