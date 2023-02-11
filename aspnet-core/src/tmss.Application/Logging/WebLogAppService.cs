@@ -12,7 +12,6 @@ using tmss.Storage;
 
 namespace tmss.Logging
 {
-    [AbpAuthorize(AppPermissions.Pages_Administration_Host_Maintenance)]
     public class WebLogAppService : tmssAppServiceBase, IWebLogAppService
     {
         private readonly IAppFolders _appFolders;

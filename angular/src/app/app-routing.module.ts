@@ -36,7 +36,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
                         path: 'admin/outbill', redirectTo: '/app/admin/outbill', pathMatch: 'full'
                     },
                     {
-                        path: 'contract',redirectTo: '/app/admin/contract', pathMatch: 'full'
+                        path: 'admin/contract',redirectTo: '/app/admin/contract', pathMatch: 'full'
                     },
 
                     {
